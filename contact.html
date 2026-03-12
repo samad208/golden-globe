@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact Golden Globe | Request Capital Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+#hero { min-height:80vh; background:radial-gradient(ellipse at 60% 40%,#EDD06E 0%,#C9A840 40%,#9A7520 75%,#6B4F0E 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:160px 56px 100px; position:relative; overflow:hidden; }
+#hero .grid-bg::before { background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px); background-size:64px 64px; }
+.hero-h1 { font-family:var(--font-display); font-size:clamp(28px,4vw,52px); font-weight:700; color:var(--black); line-height:1.1; max-width:700px; margin:16px auto 20px; }
+.hero-sub { font-size:16px; font-weight:300; color:rgba(10,10,10,.6); max-width:520px; margin:0 auto; line-height:1.8; }
+
+/* PROFILE SELECTOR */
+#profile { background:white; padding:100px 56px; }
+.prof-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,44px); font-weight:700; color:var(--black); text-align:center; margin:14px 0 16px; }
+.prof-sub { font-size:15px; font-weight:300; color:rgba(10,10,10,.5); text-align:center; max-width:520px; margin:0 auto 56px; line-height:1.75; }
+.prof-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:800px; margin:0 auto; }
+.prof-card {
+  border:2px solid var(--border); border-radius:20px; padding:32px 24px;
+  text-align:center; cursor:pointer;
+  transition:border-color .3s,background .3s,transform .3s;
+}
+.prof-card:hover,.prof-card.selected { border-color:var(--gold); background:#FDFAEF; transform:translateY(-4px); }
+.prof-card.selected { background:linear-gradient(135deg,rgba(196,151,42,.08),rgba(196,151,42,.03)); }
+.prof-icon { width:56px; height:56px; margin:0 auto 20px; }
+.prof-title { font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--black); margin-bottom:6px; }
+.prof-sub-text { font-size:12px; font-weight:300; color:rgba(10,10,10,.45); }
+
+/* FORM */
+#form-section { background:var(--cream); padding:100px 56px; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; max-width:1100px; margin:0 auto; }
+.form-left {}
+.form-h2 { font-family:var(--font-display); font-size:clamp(24px,3vw,40px); font-weight:700; color:var(--black); margin:14px 0 16px; }
+.form-desc { font-size:15px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:40px; }
+.form-group { margin-bottom:20px; }
+.form-label { display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(10,10,10,.5); margin-bottom:8px; }
+.form-input, .form-select, .form-textarea {
+  width:100%; padding:16px 20px;
+  background:white; border:1px solid var(--border);
+  border-radius:10px; font-family:var(--font-ui);
+  font-size:15px; font-weight:300; color:var(--black);
+  outline:none; transition:border-color .2s,box-shadow .2s;
+  cursor:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(196,151,42,.1); }
+.form-textarea { height:140px; resize:none; }
+.form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7F72' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 18px center; }
+.form-submit { width:100%; padding:18px; background:var(--black); color:var(--cream); border:none; border-radius:10px; font-family:var(--font-ui); font-size:13px; letter-spacing:.12em; text-transform:uppercase; cursor:none; transition:background .2s,transform .2s,box-shadow .2s; margin-top:8px; }
+.form-submit:hover { background:var(--gold); color:var(--black); transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.15); }
+.form-right {}
+.form-right-inner { background:var(--black); border-radius:24px; padding:44px; position:relative; overflow:hidden; }
+.form-right-inner::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(196,151,42,.5),transparent); }
+.form-right-title { font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--cream); margin-bottom:8px; }
+.form-right-sub { font-size:14px; font-weight:300; color:rgba(250,247,240,.4); line-height:1.7; margin-bottom:36px; }
+.form-right-quote { font-family:var(--font-display); font-style:italic; font-size:17px; color:rgba(250,247,240,.55); line-height:1.7; margin-bottom:32px; border-left:2px solid var(--gold); padding-left:20px; }
+.form-right-stat { display:flex; gap:24px; }
+.form-right-stat-item { text-align:center; }
+.form-right-stat-n { font-family:var(--font-display); font-size:32px; font-weight:700; color:var(--gold-light); }
+.form-right-stat-l { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(250,247,240,.25); margin-top:2px; }
+
+/* UPLOAD */
+#upload { background:white; padding:80px 56px; }
+.upload-h2 { font-family:var(--font-display); font-size:clamp(22px,2.8vw,38px); font-weight:700; color:var(--black); margin:14px 0 12px; }
+.upload-desc { font-size:15px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.75; margin-bottom:40px; max-width:560px; }
+.upload-zone {
+  border:2px dashed var(--border-dark); border-radius:20px;
+  padding:64px 40px; text-align:center;
+  cursor:pointer; max-width:600px;
+  transition:border-color .3s,background .3s;
+}
+.upload-zone:hover,.upload-zone.dragover { border-color:var(--gold); background:#FDFAEF; }
+.upload-icon { font-size:48px; margin-bottom:16px; }
+.upload-text { font-family:var(--font-display); font-size:18px; font-weight:600; color:var(--black); margin-bottom:8px; }
+.upload-sub { font-size:13px; font-weight:300; color:rgba(10,10,10,.4); margin-bottom:24px; }
+.upload-btn { background:var(--black); color:var(--cream); padding:12px 28px; border-radius:6px; font-size:12px; letter-spacing:.1em; text-transform:uppercase; border:none; cursor:pointer; }
+.upload-formats { font-size:11px; color:rgba(10,10,10,.3); margin-top:16px; }
+
+/* OFFICES */
+#offices { background:var(--cream); padding:100px 56px; }
+.off-h2 { font-family:var(--font-display); font-size:clamp(22px,2.8vw,38px); font-weight:700; color:var(--black); margin:14px 0 48px; }
+.off-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.off-card { background:white; border:1px solid var(--border); border-radius:20px; overflow:hidden; transition:transform .3s,box-shadow .3s; }
+.off-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.06); }
+.off-card-img { width:100%; height:200px; object-fit:cover; }
+.off-card-body { padding:28px; }
+.off-card-city { font-family:var(--font-display); font-size:20px; font-weight:700; color:var(--black); margin-bottom:4px; }
+.off-card-role { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.off-card-addr { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.6; }
+
+/* PARTNER */
+#partner { background:var(--black); padding:100px 56px; text-align:center; position:relative; overflow:hidden; }
+#partner::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(196,151,42,.07) 0%,transparent 65%); }
+.part-h2 { font-family:var(--font-display); font-size:clamp(28px,4vw,56px); font-weight:700; color:var(--cream); margin:14px 0 20px; line-height:1.1; position:relative; z-index:1; }
+.part-sub { font-size:16px; font-weight:300; color:rgba(250,247,240,.4); max-width:480px; margin:0 auto 40px; line-height:1.8; position:relative; z-index:1; }
+.part-img { width:280px; margin:0 auto 40px; border-radius:20px; overflow:hidden; position:relative; z-index:1; }
+.part-img img { width:100%; display:block; }
+
+@media(max-width:900px){
+  #hero,#profile,#form-section,#upload,#offices,#partner{padding-left:20px;padding-right:20px;}
+  .prof-cards{grid-template-columns:1fr;max-width:100%;}
+  .form-grid{grid-template-columns:1fr;gap:48px;}
+  .off-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="capital-suits.html">Capital Suite</a></li>
+    <li><a href="the-experience.html">Experience</a></li>
+    <li><a href="golden-globe.html">Golden Globe</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
+  </ul>
+</nav>
+
+<section id="hero" class="grid-bg">
+  <div class="eyebrow sr" style="justify-content:center;">Identity Classification</div>
+  <h1 class="hero-h1 sr">Select your profile to begin the allocation process</h1>
+  <p class="hero-sub sr">Our Global Market Strategy connects key financial hubs to deliver strategic access and cross-border opportunities.</p>
+</section>
+
+<section id="profile">
+  <div class="eyebrow sr" style="justify-content:center;">Who Are You?</div>
+  <h2 class="prof-h2 sr">Select Your Profile</h2>
+  <p class="prof-sub sr">Every engagement starts with understanding who we're working with. Select the profile that best describes your mandate.</p>
+  <div class="prof-cards">
+    <div class="prof-card sr" onclick="selectProfile(this)">
+      <img class="prof-icon" src="https://framerusercontent.com/images/xycA8DxgErkKqeJxe8LsWlCATFQ.svg" alt="Private"/>
+      <div class="prof-title">Private Sovereign</div>
+      <div class="prof-sub-text">(High-Net-Worth Individual)</div>
+    </div>
+    <div class="prof-card sr" onclick="selectProfile(this)">
+      <img class="prof-icon" src="https://framerusercontent.com/images/oBbjRoVmS6TZa5ysUdXMWgCn6A.svg" alt="Corporate"/>
+      <div class="prof-title">Corporate Entity</div>
+      <div class="prof-sub-text">(Expansion &amp; M&amp;A)</div>
+    </div>
+    <div class="prof-card sr" onclick="selectProfile(this)">
+      <img class="prof-icon" src="https://framerusercontent.com/images/xycA8DxgErkKqeJxe8LsWlCATFQ.svg" alt="Institutional"/>
+      <div class="prof-title">Institutional Partner</div>
+      <div class="prof-sub-text">(Large Scale Acquisitions)</div>
+    </div>
+  </div>
+</section>
+
+<section id="form-section">
+  <div class="form-grid">
+    <div class="form-left sr-left">
+      <div class="eyebrow">Capital Parameters</div>
+      <h2 class="form-h2">Begin Your Allocation</h2>
+      <p class="form-desc">Every engagement is reviewed personally by a Managing Partner. Your time and vision will be respected.</p>
+      <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your full name"/></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="your@email.com"/></div>
+      <div class="form-group"><label class="form-label">Capital Requirement</label>
+        <select class="form-select">
+          <option value="">Select range</option>
+          <option>$2M – $10M</option>
+          <option>$10M – $50M</option>
+          <option>$50M – $250M</option>
+          <option>$250M+</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Asset Class</label>
+        <select class="form-select">
+          <option value="">Select asset class</option>
+          <option>Real Estate</option>
+          <option>Equity Portfolio</option>
+          <option>Alternative Assets</option>
+          <option>Corporate Credit</option>
+          <option>Mixed / Bespoke</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Timeline</label>
+        <select class="form-select">
+          <option value="">Select urgency</option>
+          <option>Immediate (48-72 hours)</option>
+          <option>Within 2 weeks</option>
+          <option>Within 30 days</option>
+          <option>Planning phase</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Brief Overview</label><textarea class="form-textarea" placeholder="Describe your capital requirement at a high level..."></textarea></div>
+      <button class="form-submit" onclick="submitForm()">↗ Submit to Managing Partner</button>
+    </div>
+    <div class="form-right sr-right">
+      <div class="form-right-inner">
+        <div class="form-right-title">Every application reviewed personally.</div>
+        <div class="form-right-sub">At Golden Globe, we bypass the algorithmic noise. Your file is touched by a Managing Partner from day one.</div>
+        <div class="form-right-quote">"Capital deployed with precision, discretion, and the speed your vision demands."</div>
+        <div class="form-right-stat">
+          <div class="form-right-stat-item"><div class="form-right-stat-n">48h</div><div class="form-right-stat-l">Avg. Response</div></div>
+          <div class="form-right-stat-item"><div class="form-right-stat-n">$1.2B</div><div class="form-right-stat-l">Deployed</div></div>
+          <div class="form-right-stat-item"><div class="form-right-stat-n">100%</div><div class="form-right-stat-l">Partner-Led</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="upload">
+  <div class="eyebrow sr">Secure Document Transmission</div>
+  <h2 class="upload-h2 sr">Encrypted Upload</h2>
+  <p class="upload-desc sr">Provide preliminary high-level briefs or financial overviews. Your data is protected by Obsidian-grade encryption.</p>
+  <div class="upload-zone sr" id="uploadZone">
+    <div class="upload-icon">🔐</div>
+    <div class="upload-text">Drag &amp; drop your documents here</div>
+    <div class="upload-sub">or click to browse your files</div>
+    <button class="upload-btn">Upload File</button>
+    <div class="upload-formats">Supported: PDF, DOC, DOCX · Max 25MB per file</div>
+  </div>
+</section>
+
+<section id="offices">
+  <div class="eyebrow sr">Global Presence</div>
+  <h2 class="off-h2 sr">Our Offices</h2>
+  <div class="off-grid">
+    <div class="off-card sr">
+      <img class="off-card-img" src="https://framerusercontent.com/images/ps5Cdoz3XAwKeuIdYljac09hiY0.png" alt="New York"/>
+      <div class="off-card-body">
+        <div class="off-card-city">New York</div>
+        <div class="off-card-role">NYC Flagship Office</div>
+        <div class="off-card-addr">432 Park Avenue, 28th Floor<br>New York, NY 10022</div>
+      </div>
+    </div>
+    <div class="off-card sr">
+      <img class="off-card-img" src="https://framerusercontent.com/images/ps5Cdoz3XAwKeuIdYljac09hiY0.png" alt="London"/>
+      <div class="off-card-body">
+        <div class="off-card-city">London</div>
+        <div class="off-card-role">London Institutional Office</div>
+        <div class="off-card-addr">1 Grosvenor Square<br>London W1K 4AB</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partner">
+  <div class="part-img sr"><img src="https://framerusercontent.com/images/z1m8U5PeoSAjVqFNVccBHtKlLdU.png" alt="Partner"/></div>
+  <h2 class="part-h2 sr">Ready to deploy?</h2>
+  <p class="part-sub sr">Our managing partners are standing by to review your capital requirements. Submit your request and expect a response within 48 hours.</p>
+  <a href="#form-section" class="cta-btn sr" style="display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--black);padding:18px 40px;border-radius:5px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;transition:transform .2s,box-shadow .2s;position:relative;z-index:1;">↗ Access the Invitation Portal</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/><p class="footer-tagline">Private capital and real estate financing for the world's most ambitious enterprises.</p></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-nav-list"><li><a href="index.html">Home</a></li><li><a href="capital-suits.html">Capital Suite</a></li><li><a href="the-experience.html">Experience</a></li><li><a href="golden-globe.html">Golden Globe</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-cta-block"><div class="footer-col-title">Work With Us</div><p style="font-size:13px;font-weight:300;color:rgba(250,247,240,.4);line-height:1.7;margin-bottom:8px;">Ready to deploy? Our managing partners are standing by.</p><a href="#form-section" class="footer-cta-btn">↗ Get Started</a></div>
+  </div>
+  <div class="footer-bottom"><span>©2026 Golden Globe. All rights reserved.</span><ul class="footer-bottom-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosures</a></li><li><a href="#">Institutional Login</a></li></ul></div>
+</footer>
+<script>
+function selectProfile(el){document.querySelectorAll('.prof-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
+function submitForm(){
+  const btn=document.querySelector('.form-submit');
+  btn.textContent='✓ Request Submitted';btn.style.background='#2D7D4A';
+  setTimeout(()=>{btn.textContent='↗ Submit to Managing Partner';btn.style.background='';},3000);
+}
+const uz=document.getElementById('uploadZone');
+if(uz){uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('dragover');});uz.addEventListener('dragleave',()=>uz.classList.remove('dragover'));uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f)uz.querySelector('.upload-text').textContent='✓ '+f.name+' ready to upload';});}
+window.addEventListener('load',()=>{
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  gsap.from('#hero .sr',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.2});
+  document.querySelectorAll('section .sr,section .sr-left,section .sr-right').forEach(el=>{
+    const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:{y:44};
+    gsap.fromTo(el,{opacity:0,...from},{opacity:1,x:0,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+  });
+});
+</script>
+</body>
+</html>
