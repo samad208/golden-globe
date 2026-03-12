@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Capital Suite | Structured Real Estate Financing | Golden Globe</title>
+<meta name="description" content="Bespoke lending solutions for high-net-worth individuals and elite enterprises."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+/* ── HERO ── */
+#hero {
+  min-height: 92vh;
+  background: var(--black);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end;
+  padding: 0 56px 100px;
+}
+.hero-bg-img {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('https://framerusercontent.com/images/l3rkDDjdRdBtixYfTy0Uvuake0.png') center/cover no-repeat;
+  opacity: .25;
+  transform: scale(1.04);
+  transition: transform 8s ease;
+}
+#hero:hover .hero-bg-img { transform: scale(1); }
+#hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.95) 30%, rgba(10,10,10,.3) 100%); z-index:1; }
+#hero > *:not(.hero-bg-img) { position: relative; z-index: 2; }
+.hero-eyebrow { display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(196,151,42,.7);margin-bottom:28px; }
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:40px;height:1px;background:rgba(196,151,42,.4);}
+.hero-h1 { font-family:var(--font-display);font-size:clamp(52px,8vw,120px);font-weight:700;line-height:.9;color:var(--cream);letter-spacing:-.02em;max-width:900px;margin-bottom:28px; }
+.hero-sub { font-size:17px;font-weight:300;color:rgba(250,247,240,.5);max-width:520px;line-height:1.75;margin-bottom:44px; }
+
+/* ── PORTFOLIO HERO ── */
+#portfolio-hero { background:white; padding:120px 56px; }
+.port-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+.port-h2 { font-family:var(--font-display);font-size:clamp(32px,4vw,54px);font-weight:700;line-height:1.08;color:var(--black);margin:14px 0 20px; }
+.port-desc { font-size:16px;font-weight:300;color:rgba(10,10,10,.55);line-height:1.8;margin-bottom:36px; }
+.port-img-stack { position:relative; display:flex; flex-direction:column; gap:16px; }
+.port-img { border-radius:20px;overflow:hidden; }
+.port-img img { width:100%;display:block; }
+.port-img-label {
+  position:absolute;bottom:20px;left:20px;
+  background:white;border-radius:10px;padding:14px 20px;
+  font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--black);
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.port-stat-row { display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px; }
+.port-stat-card {
+  background:#FAFAF7;border:1px solid var(--border);border-radius:16px;padding:24px;
+  transition:border-color .3s,transform .3s;
+}
+.port-stat-card:hover{border-color:var(--border-dark);transform:translateY(-4px);}
+.port-stat-n{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--black);margin-bottom:6px;}
+.port-stat-l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);}
+
+/* ── ENTERPRISE ── */
+#enterprise { background:var(--cream);padding:120px 56px; }
+.ent-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+.ent-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.1;color:var(--black);margin:14px 0 20px; }
+.ent-tag {
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--black);color:var(--cream);
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  padding:8px 16px;border-radius:4px;margin-bottom:28px;
+}
+.ent-desc { font-size:16px;font-weight:300;color:rgba(10,10,10,.55);line-height:1.8;margin-bottom:36px; }
+.ent-card {
+  background:var(--black);border-radius:24px;padding:44px;
+  position:relative;overflow:hidden;
+}
+.ent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,151,42,.5),transparent);}
+.ent-card-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(196,151,42,.6);margin-bottom:16px;}
+.ent-card-h3{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:24px;}
+.ent-card-sub{font-size:14px;font-weight:300;color:rgba(250,247,240,.4);line-height:1.7;}
+
+/* ── FINANCING SOLUTIONS ── */
+#financing { background:white;padding:120px 56px; }
+.fin-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--black);margin:14px 0 12px; }
+.fin-desc { font-size:16px;font-weight:300;color:rgba(10,10,10,.5);line-height:1.8;max-width:600px;margin-bottom:64px; }
+.fin-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+.fin-card {
+  background:#FAFAF7;border:1px solid var(--border);border-radius:20px;padding:32px;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.fin-card:hover{border-color:var(--border-dark);transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.07);}
+.fin-icon{width:38px;height:38px;margin-bottom:20px;}
+.fin-title{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--black);margin-bottom:10px;}
+.fin-text{font-size:14px;font-weight:300;color:rgba(10,10,10,.5);line-height:1.65;}
+
+/* ── TRANSPARENCY ── */
+#transparency { background:var(--black);padding:120px 56px;text-align:center; }
+.trans-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--cream);margin:14px 0 16px; }
+.trans-desc { font-size:16px;font-weight:300;color:rgba(250,247,240,.4);max-width:560px;margin:0 auto 64px;line-height:1.8; }
+.trans-img { max-width:480px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.4); }
+.trans-img img { width:100%;display:block; }
+
+/* ── FAQ ── */
+#faq { background:var(--cream);padding:120px 56px; }
+.faq-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start; }
+.faq-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--black);margin:14px 0; }
+.faq-list { display:flex;flex-direction:column;gap:0; }
+.faq-item {
+  border-top:1px solid var(--border);
+  padding:24px 0; cursor:pointer;
+}
+.faq-item:last-child { border-bottom:1px solid var(--border); }
+.faq-q { display:flex;justify-content:space-between;align-items:center;gap:16px; }
+.faq-q-text { font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--black); }
+.faq-toggle { width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gold);transition:transform .3s,background .3s;flex-shrink:0; }
+.faq-item.open .faq-toggle { transform:rotate(45deg);background:var(--gold);color:white; }
+.faq-a { font-size:15px;font-weight:300;color:rgba(10,10,10,.55);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding-top:0; }
+.faq-item.open .faq-a { max-height:200px;padding-top:16px; }
+
+@media(max-width:900px){
+  .port-grid,.ent-grid,.faq-grid{grid-template-columns:1fr;gap:48px;}
+  .fin-grid{grid-template-columns:1fr;}
+  #hero,#portfolio-hero,#enterprise,#financing,#transparency,#faq{padding-left:20px;padding-right:20px;}
+  #hero{padding-bottom:60px;}
+  .port-stat-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="capital-suits.html" class="active">Capital Suite</a></li>
+    <li><a href="the-experience.html">Experience</a></li>
+    <li><a href="golden-globe.html">Golden Globe</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-eyebrow sr">Private Capital &amp; Financing</div>
+  <h1 class="hero-h1 sr">LENDING<br>SOLUTION</h1>
+  <p class="hero-sub sr">Bespoke lending solutions for high-net-worth individuals and elite enterprises. Seamless, secure, and sophisticated.</p>
+  <a href="contact.html" class="btn sr"><span class="btn-icon">↗</span>Get Started</a>
+  <p style="font-family:var(--font-display);font-style:italic;font-size:13px;color:rgba(250,247,240,.3);margin-top:12px;" class="sr">"Trusted by borrowers across the U.S."</p>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio-hero">
+  <div class="port-grid">
+    <div class="sr-left">
+      <div class="eyebrow">Portfolios</div>
+      <h2 class="port-h2">Luxury &amp; Commercial Portfolios</h2>
+      <p class="port-desc">We provide the bedrock for your next acquisition. From coastal estates to urban developments, our bridge and permanent financing solutions are issued with institutional-grade speed.</p>
+      <a href="contact.html" class="btn"><span class="btn-icon">↗</span>Get Started</a>
+    </div>
+    <div class="sr-right">
+      <div class="port-stat-row">
+        <div class="port-stat-card sr">
+          <img src="https://framerusercontent.com/images/l3rkDDjdRdBtixYfTy0Uvuake0.png" alt="" style="width:100%;height:100px;object-fit:cover;border-radius:10px;margin-bottom:14px;"/>
+          <div class="port-stat-n">LTV: 80%</div>
+          <div class="port-stat-l">Max Leverage</div>
+        </div>
+        <div class="port-stat-card sr">
+          <img src="https://framerusercontent.com/images/v2W8ewzFaw5ZYrocQPnFGR4HgU.png" alt="" style="width:100%;height:100px;object-fit:cover;border-radius:10px;margin-bottom:14px;"/>
+          <div class="port-stat-n">48 HRS</div>
+          <div class="port-stat-l">Approval Speed</div>
+        </div>
+        <div class="port-stat-card sr">
+          <img src="https://framerusercontent.com/images/kb6kQxPMcwrXfl83Ha2OE03VhoE.png" alt="" style="width:100%;height:100px;object-fit:cover;border-radius:10px;margin-bottom:14px;"/>
+          <div class="port-stat-n">TIER 1</div>
+          <div class="port-stat-l">Asset Class</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section id="enterprise">
+  <div class="ent-grid">
+    <div class="sr-left">
+      <div class="eyebrow">Elite Lending Suites</div>
+      <h2 class="ent-h2">AGILE CAPITAL FOR GLOBAL ENTERPRISE</h2>
+      <div class="ent-tag"><span>[SYSTEM 01]</span> Enterprise Credit Facility</div>
+      <p class="ent-desc">Scale without the friction of traditional banking. We fuel M&A activity, operational build-outs, and market entries with non-dilutive capital.</p>
+      <a href="contact.html" class="btn"><span class="btn-icon">↗</span>Request Access</a>
+    </div>
+    <div class="ent-card sr-right">
+      <div class="ent-card-label">Enterprise Suite</div>
+      <div class="ent-card-h3">Non-dilutive capital for enterprises moving at the speed of opportunity.</div>
+      <div class="ent-card-sub">M&A activity · Operational build-outs · Global market entries · Cross-border acquisitions</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCING SOLUTIONS -->
+<section id="financing">
+  <div class="eyebrow sr">Financing Solutions</div>
+  <h2 class="fin-h2 sr">Specialized Financing Solutions</h2>
+  <p class="fin-desc sr">We've stripped away the bureaucracy of traditional banking. No paperwork loops. No generic algorithms. Just high-level underwriting for high-level ambitions.</p>
+  <div class="fin-grid">
+    <div class="fin-card sr">
+      <img class="fin-icon" src="https://framerusercontent.com/images/byPQC0zBTaFizjh2hr6JGlJS7Q.svg" alt="Equity"/>
+      <div class="fin-title">Equity-Backed Liquidity</div>
+      <div class="fin-text">Strategic liquidity structured against public and private equity positions. Fast, flexible, and portfolio-aware.</div>
+    </div>
+    <div class="fin-card sr">
+      <img class="fin-icon" src="https://framerusercontent.com/images/TVq4zr6mVydl6BOYLYbCWzf8vA.svg" alt="Alternative"/>
+      <div class="fin-title">Alternative Asset Credit</div>
+      <div class="fin-text">Specialized credit facilities secured by high-value collectibles and tangible assets. Art, watches, and rare commodities accepted.</div>
+    </div>
+    <div class="fin-card sr">
+      <img class="fin-icon" src="https://framerusercontent.com/images/5ALmLce9wLcG2e3ZetZusY1uRg.svg" alt="Bespoke"/>
+      <div class="fin-title">Bespoke Capital Structures</div>
+      <div class="fin-text">Tailored financing solutions designed for complex, nontraditional asset profiles. Every mandate is unique — so is our approach.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCY -->
+<section id="transparency">
+  <div class="eyebrow sr" style="justify-content:center;color:var(--gold)">Transparency Redefined</div>
+  <h2 class="trans-h2 sr">Transparency by design</h2>
+  <p class="trans-desc sr">Use our digital interface to simulate your capital requirement. No hidden clauses. No robotic algorithms. Just clean data.</p>
+  <div class="trans-img sr">
+    <img src="https://framerusercontent.com/images/i1ZwfP53yClDqXQ2NMIjTDPs1iI.png" alt="Transparency Interface"/>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-grid">
+    <div class="sr-left">
+      <div class="eyebrow">FAQs</div>
+      <h2 class="faq-h2">Frequently Asked Questions</h2>
+      <p style="font-size:15px;font-weight:300;color:rgba(10,10,10,.5);line-height:1.75;margin-top:16px;">We've stripped away the bureaucracy. Here's what most partners ask us before getting started.</p>
+    </div>
+    <div class="faq-list sr-right">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How does Golden Globe accelerate underwriting?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Direct partner review. Senior-level credit committees. No algorithmic bottlenecks. Every file is touched by a decision-maker from day one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What asset classes do you accept as collateral?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">We accept Tier 1 real estate, public and private equity, alternative assets including collectibles, fine art, and structured portfolios. Reach out for a bespoke assessment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What is the minimum capital requirement?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Our mandates typically begin at $2M. We do not operate in the retail lending space — Golden Globe is exclusively for high-net-worth individuals and institutional partners.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is my financial information kept confidential?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Absolutely. All data flows through our Obsidian-grade encrypted portal. We operate under strict NDA and institutional-grade privacy protocols. Your information never leaves our secure infrastructure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/>
+      <p class="footer-tagline">Private capital and real estate financing for the world's most ambitious enterprises.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="capital-suits.html">Capital Suite</a></li>
+        <li><a href="the-experience.html">Experience</a></li>
+        <li><a href="golden-globe.html">Golden Globe</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-cta-block">
+      <div class="footer-col-title">Work With Us</div>
+      <p style="font-size:13px;font-weight:300;color:rgba(250,247,240,.4);line-height:1.7;margin-bottom:8px;">Ready to deploy? Our managing partners are standing by.</p>
+      <a href="contact.html" class="footer-cta-btn">↗ Get Started</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>©2026 Golden Globe. All rights reserved.</span>
+    <ul class="footer-bottom-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Disclosures</a></li>
+      <li><a href="#">Institutional Login</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  gsap.from('#hero .sr',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.2});
+  document.querySelectorAll('section .sr,section .sr-left,section .sr-right,section .sr-scale').forEach(el=>{
+    const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:el.classList.contains('sr-scale')?{scale:.93}:{y:44};
+    gsap.fromTo(el,{opacity:0,...from},{opacity:1,x:0,y:0,scale:1,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+  });
+  // FAQ
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click',()=>{
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    });
+  });
+});
+</script>
+</body>
+</html>
