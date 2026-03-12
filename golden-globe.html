@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Golden Globe | Institutional Private Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+#hero { min-height:90vh; background:var(--black); display:flex; flex-direction:column; justify-content:flex-end; padding:160px 56px 100px; position:relative; overflow:hidden; }
+#hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 30%,rgba(196,151,42,.12) 0%,transparent 60%); }
+.hero-h1 { font-family:var(--font-display); font-size:clamp(52px,8vw,120px); font-weight:700; line-height:.9; color:var(--cream); letter-spacing:-.02em; margin:20px 0 28px; max-width:900px; position:relative; }
+.hero-sub { font-size:17px; font-weight:300; color:rgba(250,247,240,.45); max-width:560px; line-height:1.8; position:relative; }
+
+/* GLOBAL STRATEGY */
+#global-strat { background:var(--cream); padding:120px 56px; }
+.gs-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+.gs-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 16px; line-height:1.1; }
+.gs-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:48px; }
+.gs-markets { display:flex; flex-direction:column; gap:0; }
+.gs-market { padding:24px 0; border-top:1px solid var(--border); display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:start; }
+.gs-market:last-child { border-bottom:1px solid var(--border); }
+.gs-market-dot { width:8px; height:8px; border-radius:50%; background:var(--gold); margin-top:6px; flex-shrink:0; }
+.gs-market-title { font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--black); margin-bottom:6px; }
+.gs-market-text { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.65; }
+.gs-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.08); }
+.gs-img img { width:100%; display:block; }
+
+/* COMPLIANCE */
+#compliance { background:white; padding:120px 56px; }
+.comp-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.comp-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 20px; line-height:1.1; }
+.comp-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:36px; }
+.comp-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.06); }
+.comp-img img { width:100%; display:block; }
+.comp-points { display:flex; flex-direction:column; gap:16px; }
+.comp-point { display:flex; gap:16px; align-items:start; padding:20px; background:#FAFAF7; border:1px solid var(--border); border-radius:14px; }
+.comp-point-icon { width:36px; height:36px; background:var(--gold-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.comp-point-title { font-weight:500; font-size:14px; color:var(--black); margin-bottom:4px; }
+.comp-point-text { font-size:13px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.55; }
+
+/* BEYOND CAPITAL */
+#beyond { background:var(--black); padding:120px 56px; }
+.bey-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.bey-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--cream); margin:14px 0 20px; }
+.bey-desc { font-size:16px; font-weight:300; color:rgba(250,247,240,.45); line-height:1.8; margin-bottom:36px; }
+.bey-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.5); }
+.bey-img img { width:100%; display:block; }
+
+/* FOREIGN PORTFOLIOS */
+#foreign { background:var(--cream); padding:120px 56px; }
+.for-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 16px; }
+.for-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; max-width:600px; margin-bottom:64px; }
+.for-gallery { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; align-items:start; }
+.for-img { border-radius:16px; overflow:hidden; }
+.for-img img { width:100%; display:block; object-fit:cover; }
+.for-img:nth-child(1) { grid-row:span 2; }
+.for-img:nth-child(3) { grid-row:span 2; }
+.for-img-num { position:relative; }
+.for-img-num::before { content:attr(data-num); position:absolute; top:12px; left:12px; background:var(--gold); color:var(--black); width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; z-index:1; }
+
+@media(max-width:900px){
+  #hero{padding:120px 20px 60px;}
+  .gs-grid,.comp-grid,.bey-grid{grid-template-columns:1fr;gap:48px;}
+  #global-strat,#compliance,#beyond,#foreign{padding:80px 20px;}
+  .for-gallery{grid-template-columns:repeat(2,1fr);}
+  .for-img:nth-child(1),.for-img:nth-child(3){grid-row:auto;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="capital-suits.html">Capital Suite</a></li>
+    <li><a href="the-experience.html">Experience</a></li>
+    <li><a href="golden-globe.html" class="active">Golden Globe</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="eyebrow sr" style="color:rgba(196,151,42,.7)">True Partnership</div>
+  <h1 class="hero-h1 sr">Capital Without<br>Boundaries</h1>
+  <p class="hero-sub sr">From the skyscrapers of New York to the estates of Zurich, Golden Globe is the silent partner behind the world's most significant moves.</p>
+</section>
+
+<section id="global-strat">
+  <div class="gs-grid">
+    <div class="sr-left">
+      <div class="eyebrow">True Partnership</div>
+      <h2 class="gs-h2">Global Market Strategy</h2>
+      <p class="gs-desc">Our Global Market Strategy connects key financial hubs across North America, Europe, and emerging markets to deliver strategic access and cross-border opportunities.</p>
+      <div class="gs-markets">
+        <div class="gs-market sr"><div class="gs-market-dot"></div><div><div class="gs-market-title">North American Core</div><div class="gs-market-text">Commercial real estate and corporate liquidity in Tier 1 U.S. markets. New York, Miami, Los Angeles, and Chicago.</div></div></div>
+        <div class="gs-market sr"><div class="gs-market-dot"></div><div><div class="gs-market-title">European Institutional Access</div><div class="gs-market-text">Portfolio management and bridge financing across the UK and Switzerland. London, Zurich, Geneva, and Liechtenstein.</div></div></div>
+        <div class="gs-market sr"><div class="gs-market-dot"></div><div><div class="gs-market-title">Emerging Market Strategy</div><div class="gs-market-text">High-growth opportunities across Southeast Asia, the Middle East, and Latin American markets.</div></div></div>
+      </div>
+    </div>
+    <div class="gs-img sr-right"><img src="https://framerusercontent.com/images/3dSf0ejzUThNVHlYu7raVlKK8Q.png" alt="Global Map"/></div>
+  </div>
+</section>
+
+<section id="compliance">
+  <div class="comp-grid">
+    <div class="comp-img sr-left"><img src="https://framerusercontent.com/images/3dSf0ejzUThNVHlYu7raVlKK8Q.png" alt="Compliance"/></div>
+    <div class="sr-right">
+      <div class="eyebrow">Compliance Without Compromise</div>
+      <h2 class="comp-h2">Seamless Transfers &amp; Absolute Compliance</h2>
+      <p class="comp-desc">Our infrastructure allows for seamless cross-border lending and international asset verification. We navigate complex global regulations so your capital moves at the speed of opportunity.</p>
+      <div class="comp-points">
+        <div class="comp-point sr"><div class="comp-point-icon">⚖️</div><div><div class="comp-point-title">Multi-Jurisdiction Compliance</div><div class="comp-point-text">Full regulatory alignment across 30+ countries and jurisdictions.</div></div></div>
+        <div class="comp-point sr"><div class="comp-point-icon">🌍</div><div><div class="comp-point-title">Cross-Border Asset Verification</div><div class="comp-point-text">Digital-first verification that operates across borders without friction.</div></div></div>
+        <div class="comp-point sr"><div class="comp-point-icon">📋</div><div><div class="comp-point-title">Real-Time Regulatory Navigation</div><div class="comp-point-text">Dedicated compliance team monitors and adapts to evolving global frameworks.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="bey-grid">
+    <div>
+      <div class="eyebrow sr" style="color:var(--gold)">Beyond Capital</div>
+      <h2 class="bey-h2 sr">Beyond the balance sheet</h2>
+      <p class="bey-desc sr">For our elite members, capital is just the beginning. Gain access to private lounges, curated global networking events, and the full reach of the Golden Globe network.</p>
+      <a href="contact.html" class="btn btn-outline sr"><span class="btn-icon">↗</span>Request Membership</a>
+    </div>
+    <div class="bey-img sr-right"><img src="https://framerusercontent.com/images/TnPPYFShLsQUpx6pVrwlsiHPlg.png" alt="Beyond Capital"/></div>
+  </div>
+</section>
+
+<section id="foreign">
+  <div class="eyebrow sr">Foreign Portfolios</div>
+  <h2 class="for-h2 sr">Foreign Real Estate Portfolios</h2>
+  <p class="for-desc sr">We structure and support diversified foreign real estate portfolios across high-growth global markets. Our approach ensures strategic asset allocation, risk mitigation, and long-term value creation.</p>
+  <div class="for-gallery">
+    <div class="for-img for-img-num sr" data-num="01" style="position:relative;"><img src="https://framerusercontent.com/images/7Jpp4HQU8wDD4eCyreHNC9Wy1vw.jpg" alt="Portfolio 01" style="height:360px;"/></div>
+    <div class="for-img for-img-num sr" data-num="02" style="position:relative;"><img src="https://framerusercontent.com/images/x0z3SRzzaLQF88IzFkAnSrXrk.jpg" alt="Portfolio 02" style="height:170px;"/></div>
+    <div class="for-img for-img-num sr" data-num="03" style="position:relative;"><img src="https://framerusercontent.com/images/GnP8Nynr0ekE0YBrzBWFkDnLM6Q.jpg" alt="Portfolio 03" style="height:360px;"/></div>
+    <div class="for-img for-img-num sr" data-num="04" style="position:relative;"><img src="https://framerusercontent.com/images/t4CQZwjyeo6rOKGpsyS2Su5h9lA.jpg" alt="Portfolio 04" style="height:170px;"/></div>
+    <div class="for-img for-img-num sr" data-num="05" style="position:relative;"><img src="https://framerusercontent.com/images/d9GJ4Cq6ZpLVHdwIe92HATwzZEI.jpg" alt="Portfolio 05" style="height:170px;"/></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/><p class="footer-tagline">Private capital and real estate financing for the world's most ambitious enterprises.</p></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-nav-list"><li><a href="index.html">Home</a></li><li><a href="capital-suits.html">Capital Suite</a></li><li><a href="the-experience.html">Experience</a></li><li><a href="golden-globe.html">Golden Globe</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-cta-block"><div class="footer-col-title">Work With Us</div><p style="font-size:13px;font-weight:300;color:rgba(250,247,240,.4);line-height:1.7;margin-bottom:8px;">Ready to deploy? Our managing partners are standing by.</p><a href="contact.html" class="footer-cta-btn">↗ Get Started</a></div>
+  </div>
+  <div class="footer-bottom"><span>©2026 Golden Globe. All rights reserved.</span><ul class="footer-bottom-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosures</a></li><li><a href="#">Institutional Login</a></li></ul></div>
+</footer>
+<script>
+window.addEventListener('load',()=>{
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  gsap.from('#hero .sr',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.25});
+  document.querySelectorAll('section .sr,section .sr-left,section .sr-right').forEach(el=>{
+    const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:{y:44};
+    gsap.fromTo(el,{opacity:0,...from},{opacity:1,x:0,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+  });
+});
+</script>
+</body>
+</html>
