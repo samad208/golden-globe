@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Private Capital & Real Estate Financing | Golden Globe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://js.puter.com/v2/"></script>
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-pale: #F5E9C4;
+  --gold-bg: #D4A843;
+  --gold-gradient: #c8982a;
+  --black: #0A0A0A;
+  --dark: #111010;
+  --off-white: #F8F5EE;
+  --warm-gray: #8A7F72;
+  --cream: #FAF6EE;
+  --grid-color: rgba(201, 168, 76, 0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CUSTOM CURSOR */
+.cursor {
+  position: fixed;
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  position: fixed;
+  width: 40px; height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+  opacity: 0.6;
+}
+body:has(a:hover) .cursor, body:has(button:hover) .cursor {
+  width: 20px; height: 20px;
+  background: var(--gold-light);
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(250, 246, 238, 0.92);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(201, 168, 76, 0.2);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--black);
+}
+.logo-mark {
+  width: 42px; height: 42px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: var(--black);
+  color: var(--cream) !important;
+  padding: 12px 24px !important;
+  border-radius: 4px;
+  font-size: 11px !important;
+  letter-spacing: 0.14em !important;
+  opacity: 1 !important;
+  display: flex; align-items: center; gap: 8px;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; transform: translateY(-1px); }
+.nav-cta::before { content: '↗'; font-size: 13px; }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 60% 40%, #E8C96A 0%, #C9A84C 35%, #A07C2A 70%, #7A5C18 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  padding-top: 140px;
+}
+
+/* Grid overlay */
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.65);
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block;
+  width: 48px; height: 1px;
+  background: rgba(10, 10, 10, 0.4);
+}
+
+.hero-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(52px, 8vw, 120px);
+  font-weight: 600;
+  line-height: 0.92;
+  color: var(--black);
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+  max-width: 900px;
+}
+
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px; font-weight: 300;
+  color: rgba(10, 10, 10, 0.72);
+  text-align: center;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.hero-cta-group {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 16px;
+}
+.btn-primary {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--black);
+  color: var(--cream);
+  padding: 15px 32px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border: none; cursor: none;
+}
+.btn-primary:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.btn-icon {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.hero-trust {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(10,10,10,0.55);
+  margin-bottom: 60px;
+}
+
+/* AI CARD VISUAL */
+.hero-visual {
+  position: relative;
+  width: 340px; height: 420px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.hero-card-wrap {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 220px; height: 300px;
+}
+.card-bg {
+  width: 220px; height: 300px;
+  background: linear-gradient(145deg, #8B6914 0%, #5C4510 50%, #3A2B08 100%);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.3);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.card-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, transparent 60%);
+}
+.card-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 32px; font-weight: 600;
+  color: rgba(201,168,76,0.8);
+  letter-spacing: 0.05em;
+  position: relative; z-index: 1;
+}
+.card-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+  margin-top: 8px;
+  position: relative; z-index: 1;
+}
+.card-shine {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+  animation: cardShine 4s ease-in-out infinite;
+}
+@keyframes cardShine {
+  0%, 100% { transform: translateX(-30%) translateY(-30%); }
+  50% { transform: translateX(30%) translateY(30%); }
+}
+
+/* FLOATING BADGES */
+.badge {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--black);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  white-space: nowrap;
+}
+.badge-new {
+  top: 20px; right: -20px;
+  background: var(--gold-light);
+  color: var(--black);
+  border-radius: 50%;
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 500;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+.badge-hours {
+  bottom: 90px; left: -60px;
+  font-size: 12px;
+  animation: floatBadge 3.5s ease-in-out infinite 0.5s;
+}
+.badge-capital {
+  bottom: 60px; right: -50px;
+  font-size: 12px;
+  animation: floatBadge 4s ease-in-out infinite 1s;
+}
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* AI HERO IMAGE */
+.ai-hero-image-wrapper {
+  width: 100%; display: flex; justify-content: center;
+  margin-top: 20px;
+  position: relative;
+}
+.ai-hero-image-wrapper img {
+  max-width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+  animation: floatBadge 5s ease-in-out infinite;
+}
+.ai-gen-badge {
+  position: absolute;
+  bottom: -12px;
+  right: calc(50% - 180px);
+  background: var(--black);
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'DM Sans', sans-serif;
+}
+.ai-loading {
+  width: 220px; height: 300px;
+  background: linear-gradient(145deg, #8B6914, #3A2B08);
+  border-radius: 20px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.ai-loading-ring {
+  width: 48px; height: 48px;
+  border: 2px solid rgba(201,168,76,0.3);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.ai-loading-text {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.6);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* SECTIONS */
+section { position: relative; }
+
+.section-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.section-eyebrow::before, .section-eyebrow::after {
+  content: ''; display: block;
+  width: 32px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+/* PHILOSOPHY */
+#philosophy {
+  background: var(--cream);
+  padding: 140px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.philosophy-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+.philosophy-headline em {
+  font-style: normal;
+  color: var(--warm-gray);
+  opacity: 0.45;
+}
+.philosophy-right {
+  display: flex; flex-direction: column; gap: 32px;
+}
+.philosophy-text {
+  font-size: 16px; font-weight: 300;
+  line-height: 1.8;
+  color: rgba(10,10,10,0.65);
+  border-top: 1px solid rgba(201,168,76,0.3);
+  padding-top: 20px;
+}
+
+/* OFFERINGS */
+#offerings {
+  background: white;
+  padding: 140px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.offerings-left { position: sticky; top: 100px; }
+.offerings-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+.offerings-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(10,10,10,0.5);
+  line-height: 1.7;
+}
+.offerings-list {
+  display: flex; flex-direction: column; gap: 4px;
+  padding-top: 20px;
+}
+.offering-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.offering-num {
+  width: 40px; height: 40px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: var(--black);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.offering-line {
+  position: absolute;
+  left: 20px; top: 44px;
+  width: 1px; height: calc(100% + 4px);
+  background: linear-gradient(to bottom, var(--gold-light), transparent);
+}
+.offering-item:last-child .offering-line { display: none; }
+.offering-card {
+  background: #FAFAF8;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 4px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.offering-card:hover {
+  border-color: rgba(201,168,76,0.5);
+  transform: translateX(6px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+.offering-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 16px; font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.offering-card-desc {
+  font-size: 14px; font-weight: 300;
+  color: rgba(10,10,10,0.55);
+  line-height: 1.65;
+}
+
+/* EXPERIENCE */
+#experience {
+  background: var(--black);
+  padding: 140px 80px;
+  color: var(--cream);
+}
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 80px;
+}
+.exp-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+.exp-desc {
+  font-size: 16px; font-weight: 300;
+  color: rgba(248,245,238,0.55);
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+.exp-features {
+  display: flex; flex-direction: column; gap: 28px;
+}
+.exp-feature {
+  display: flex; align-items: start; gap: 18px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.exp-feature:last-child { border-bottom: none; }
+.exp-icon {
+  width: 44px; height: 44px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.exp-feature-title {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+  margin-bottom: 6px;
+}
+.exp-feature-desc {
+  font-size: 14px; font-weight: 300;
+  color: rgba(248,245,238,0.5);
+  line-height: 1.65;
+}
+/* Dark card in experience */
+.exp-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.exp-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
+}
+.exp-globe-icon {
+  width: 80px; height: 80px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 24px;
+  position: relative;
+}
+.exp-globe-icon::before {
+  content: '';
+  position: absolute; inset: -6px;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 50%;
+  animation: ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.exp-stat-big {
+  font-family: 'Cinzel', serif;
+  font-size: 56px; font-weight: 600;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.exp-stat-label {
+  font-size: 12px; font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.4);
+}
+.exp-divider {
+  width: 100%; height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 28px 0;
+}
+
+/* PROCESS */
+#process {
+  background: var(--cream);
+  padding: 140px 80px;
+}
+.process-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+.process-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--black);
+}
+.process-desc {
+  font-size: 15px; font-weight: 300;
+  color: rgba(10,10,10,0.55);
+  line-height: 1.8;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.process-step {
+  background: white;
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, transform 0.3s;
+}
+.process-step:hover { background: #FDFAF3; transform: translateY(-4px); }
+.process-step:first-child { border-radius: 20px 0 0 20px; }
+.process-step:last-child { border-radius: 0 20px 20px 0; }
+.step-num {
+  font-family: 'Cinzel', serif;
+  font-size: 72px; font-weight: 600;
+  color: rgba(201,168,76,0.1);
+  line-height: 1;
+  margin-bottom: 16px;
+  position: absolute;
+  top: 20px; right: 24px;
+}
+.step-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 16px;
+  margin-top: 60px;
+}
+.step-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 14px; font-weight: 300;
+  color: rgba(10,10,10,0.55);
+  line-height: 1.7;
+}
+
+/* GLOBAL */
+#global {
+  background: var(--black);
+  padding: 100px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#global::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+.global-eyebrow {
+  font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px;
+}
+.global-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.global-num {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 600;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,168,76,0.3);
+  line-height: 1;
+  margin: 20px 0;
+  display: block;
+}
+.global-sub {
+  font-size: 14px; font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(248,245,238,0.4);
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.global-desc {
+  font-size: 16px; font-weight: 300;
+  color: rgba(248,245,238,0.55);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* TESTIMONIALS */
+#testimonials {
+  background: var(--cream);
+  padding: 140px 80px;
+}
+.testimonials-header {
+  margin-bottom: 60px;
+}
+.testimonials-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.testimonials-track {
+  display: flex; gap: 24px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.testimonials-scroll {
+  display: flex; gap: 24px;
+  animation: scrollLeft 30s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.testimonials-track:hover .testimonials-scroll { animation-play-state: paused; }
+.testimonial-card {
+  background: white;
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 20px;
+  padding: 32px;
+  min-width: 340px;
+  flex-shrink: 0;
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 14px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.testimonial-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 400; font-style: italic;
+  color: var(--black);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.author-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 14px; color: var(--black);
+}
+.author-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--black);
+}
+.author-title {
+  font-size: 12px; font-weight: 300;
+  color: rgba(10,10,10,0.45);
+}
+
+/* CTA */
+#cta {
+  background: radial-gradient(ellipse at 50% 0%, #E8C96A 0%, #C9A84C 40%, #8B6010 100%);
+  padding: 160px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-eyebrow {
+  font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.5);
+  margin-bottom: 20px;
+}
+.cta-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+.cta-sub {
+  font-size: 16px; font-weight: 300;
+  color: rgba(10,10,10,0.6);
+  max-width: 480px; margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.btn-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--black); color: var(--cream);
+  padding: 18px 40px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-cta:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  padding: 60px 80px 40px;
+  color: rgba(248,245,238,0.5);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 32px;
+}
+.footer-brand {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+.footer-brand .logo-mark { border-color: rgba(201,168,76,0.4); color: rgba(201,168,76,0.7); }
+.footer-brand-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: rgba(248,245,238,0.8);
+  letter-spacing: 0.05em;
+}
+.footer-desc {
+  font-size: 13px; font-weight: 300;
+  line-height: 1.7;
+  max-width: 240px;
+}
+.footer-nav {
+  display: flex; flex-direction: column; gap: 12px;
+  list-style: none;
+  text-align: center;
+}
+.footer-nav a {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.45);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-nav a:hover { color: var(--gold-light); }
+.footer-right {
+  text-align: right;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.footer-cta-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold);
+  color: var(--black);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  align-self: flex-end;
+}
+.footer-cta-link:hover { background: var(--gold-light); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; color: rgba(248,245,238,0.25);
+}
+.footer-links {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-links a {
+  color: rgba(248,245,238,0.25);
+  text-decoration: none;
+  font-size: 11px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(248,245,238,0.5); }
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.reveal-left { opacity: 0; transform: translateX(-40px); }
+.reveal-right { opacity: 0; transform: translateX(40px); }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.4); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  #philosophy, #offerings, .exp-grid, .process-header { grid-template-columns: 1fr; gap: 40px; }
+  #philosophy, #offerings, #experience, #process, #testimonials, #cta { padding: 80px 24px; }
+  .process-steps { grid-template-columns: 1fr; }
+  .process-step:first-child, .process-step:last-child { border-radius: 20px; }
+  footer { padding: 48px 24px 32px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-right { text-align: left; }
+  .hero-headline { font-size: 44px; }
+  #global { padding: 80px 24px; }
+  .testimonials-track { padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">GG</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#philosophy">Home</a></li>
+    <li><a href="#offerings">Capital Suite</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#process">Golden Globe</a></li>
+    <li><a href="#cta">Contact</a></li>
+    <li><a href="#cta" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Private Capital &amp; Financing</div>
+  <h1 class="hero-headline reveal">THE STANDARD OF PRIVATE CAPITAL.</h1>
+  <p class="hero-sub reveal">Golden Globe provides bespoke lending solutions for high-net-worth individuals and elite enterprises. Seamless, secure, and sophisticated.</p>
+  <div class="hero-cta-group reveal">
+    <a href="#cta" class="btn-primary">
+      <span class="btn-icon">↗</span>
+      Request Allocation
+    </a>
+  </div>
+  <p class="hero-trust reveal">"Trusted by borrowers across the U.S."</p>
+
+  <!-- AI Generated Visual / Card -->
+  <div class="hero-visual">
+    <div class="hero-card-wrap">
+      <div id="heroImageContainer">
+        <div class="ai-loading" id="aiLoader">
+          <div class="ai-loading-ring"></div>
+          <div class="ai-loading-text">Generating with Nano Banana 2</div>
+        </div>
+      </div>
+      <div class="badge badge-new">New!</div>
+      <div class="badge badge-hours">48-Hour Approval Window.</div>
+      <div class="badge badge-capital">$1.2B+ Capital Deployed.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="reveal-left">
+    <div class="section-eyebrow">Our Philosophy</div>
+    <h2 class="philosophy-headline">
+      LENDING THAT WORKS<br>
+      THE WAY <em>YOU DO.</em>
+    </h2>
+  </div>
+  <div class="philosophy-right reveal-right">
+    <p class="philosophy-text">We believe borrowing should feel empowering, not overwhelming. That's why we've built a lending experience that's clear, flexible, and designed around real financial needs.</p>
+    <p class="philosophy-text">Whether you're planning ahead or handling the unexpected, we're here to help you move forward with confidence.</p>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section id="offerings">
+  <div class="offerings-left">
+    <div class="section-eyebrow reveal">Core Capital Offerings</div>
+    <h2 class="offerings-title reveal">ELITE LENDING SUITES</h2>
+    <p class="offerings-sub reveal">Explore the features that keep you organized and on track.</p>
+  </div>
+  <div class="offerings-list">
+    <div class="offering-item reveal">
+      <div>
+        <div class="offering-num">1</div>
+        <div class="offering-line"></div>
+      </div>
+      <div class="offering-card">
+        <div class="offering-card-title">PRIVATE LINE OF CREDIT.</div>
+        <div class="offering-card-desc">Immediate liquidity backed by your diverse asset classes. Access capital when you need it, structured around your portfolio.</div>
+      </div>
+    </div>
+    <div class="offering-item reveal">
+      <div>
+        <div class="offering-num">2</div>
+        <div class="offering-line"></div>
+      </div>
+      <div class="offering-card">
+        <div class="offering-card-title">REAL ESTATE ACQUISITIONS.</div>
+        <div class="offering-card-desc">Tailored bridge loans and permanent financing for luxury portfolios. From acquisition to stabilization.</div>
+      </div>
+    </div>
+    <div class="offering-item reveal">
+      <div>
+        <div class="offering-num">3</div>
+      </div>
+      <div class="offering-card">
+        <div class="offering-card-title">CORPORATE EXPANSION.</div>
+        <div class="offering-card-desc">Agile capital for fast-moving enterprises and M&A activity. Deploy with precision, scale with confidence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-eyebrow reveal" style="color: var(--gold);">Our Approach to Capital</div>
+  <div class="exp-grid">
+    <div>
+      <h2 class="exp-headline reveal">THE GOLDEN GLOBE EXPERIENCE</h2>
+      <p class="exp-desc reveal">We've stripped away the bureaucracy of traditional banking. No paperwork loops. No generic algorithms. Just high-level underwriting for high-level ambitions.</p>
+      <div class="exp-features">
+        <div class="exp-feature reveal">
+          <div class="exp-icon">🛡</div>
+          <div>
+            <div class="exp-feature-title">WHITE-GLOVE UNDERWRITING.</div>
+            <div class="exp-feature-desc">Your life handled by a partner, not a processor. Every file touched by a senior underwriter.</div>
+          </div>
+        </div>
+        <div class="exp-feature reveal">
+          <div class="exp-icon">🔐</div>
+          <div>
+            <div class="exp-feature-title">OBSIDIAN SECURITY.</div>
+            <div class="exp-feature-desc">Multi-layered encryption for your financial privacy. Bank-grade infrastructure, private-office discretion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-globe-icon">GG</div>
+      <div class="exp-stat-big">$1.2B+</div>
+      <div class="exp-stat-label">Capital Deployed</div>
+      <div class="exp-divider"></div>
+      <div class="exp-stat-big" style="font-size: 36px;">21,000+</div>
+      <div class="exp-stat-label">Global Check-ins</div>
+      <div class="exp-divider"></div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:rgba(248,245,238,0.5); line-height:1.7;">
+        From the skyscrapers of New York to the estates of Zurich, Golden Globe is the silent partner behind the world's most significant moves.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header">
+    <div>
+      <div class="section-eyebrow reveal">How We Work</div>
+      <h2 class="process-headline reveal">FROM APPLICATION<br>TO ALLOCATION.</h2>
+    </div>
+    <p class="process-desc reveal">We've stripped away the bureaucracy of traditional banking. No paperwork loops. No generic algorithms. Just high-level underwriting for high-level ambitions.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <span class="step-num">01</span>
+      <div class="step-title">DISCOVERY</div>
+      <div class="step-headline">A 15-minute briefing of your capital needs.</div>
+      <div class="step-desc">A concise, high-level conversation with a senior partner to understand your financial goals and structure the ideal solution.</div>
+    </div>
+    <div class="process-step reveal">
+      <span class="step-num">02</span>
+      <div class="step-title">VERIFICATION</div>
+      <div class="step-headline">Secure, digital-first asset verification.</div>
+      <div class="step-desc">Via our encrypted portal, your assets are verified swiftly and securely — no in-person visits, no redundant paperwork loops.</div>
+    </div>
+    <div class="process-step reveal">
+      <span class="step-num">03</span>
+      <div class="step-title">EXECUTION</div>
+      <div class="step-headline">Capital deployed in as little as 48 hours.</div>
+      <div class="step-desc">Final terms issued and capital deployed via wire. From first conversation to funded — in a timeframe that matches your ambition.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section id="global">
+  <div class="global-eyebrow reveal">Global Reach</div>
+  <h2 class="global-headline reveal">BORDERLESS AMBITION</h2>
+  <span class="global-num reveal">21K+</span>
+  <div class="global-sub reveal">Check-ins logged last month</div>
+  <p class="global-desc reveal">From the skyscrapers of New York to the estates of Zurich, Golden Globe is the silent partner behind the world's most significant moves.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <div class="section-eyebrow reveal">Client Experience</div>
+    <h2 class="testimonials-title reveal">Trusted by the world's most ambitious.</h2>
+  </div>
+  <div class="testimonials-track">
+    <div class="testimonials-scroll" id="testimonialScroll">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Using this platform has completely changed the way I handle my business payments. Everything is fast, secure, and easy to manage."</div>
+        <div class="testimonial-author"><div class="author-avatar">MT</div><div><div class="author-name">Michael Thompson</div><div class="author-title">Real Estate Investor</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"I started with the free plan and quickly upgraded. The investment tools are clear, easy to understand, and actually helped me make smarter decisions."</div>
+        <div class="testimonial-author"><div class="author-avatar">CH</div><div><div class="author-name">Christopher Hale</div><div class="author-title">Business Owner</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"The white-glove underwriting team made the entire process seamless. Capital deployed in 36 hours. Truly a different class of lender."</div>
+        <div class="testimonial-author"><div class="author-avatar">SM</div><div><div class="author-name">Sarah Mitchell</div><div class="author-title">Founder &amp; CEO</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Golden Globe understands that time is capital. Their process respects that. No games, no delays — just execution at the highest level."</div>
+        <div class="testimonial-author"><div class="author-avatar">JR</div><div><div class="author-name">James Rothwell</div><div class="author-title">Private Equity Partner</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"We've used traditional banks and boutique lenders. Nothing compares to the Golden Globe experience. It's a different standard entirely."</div>
+        <div class="testimonial-author"><div class="author-avatar">AP</div><div><div class="author-name">Alexandra Pierce</div><div class="author-title">Family Office Director</div></div></div>
+      </div>
+      <!-- Duplicate for infinite scroll -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Using this platform has completely changed the way I handle my business payments. Everything is fast, secure, and easy to manage."</div>
+        <div class="testimonial-author"><div class="author-avatar">MT</div><div><div class="author-name">Michael Thompson</div><div class="author-title">Real Estate Investor</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"I started with the free plan and quickly upgraded. The investment tools are clear, easy to understand, and actually helped me make smarter decisions."</div>
+        <div class="testimonial-author"><div class="author-avatar">CH</div><div><div class="author-name">Christopher Hale</div><div class="author-title">Business Owner</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"The white-glove underwriting team made the entire process seamless. Capital deployed in 36 hours. Truly a different class of lender."</div>
+        <div class="testimonial-author"><div class="author-avatar">SM</div><div><div class="author-name">Sarah Mitchell</div><div class="author-title">Founder &amp; CEO</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Golden Globe understands that time is capital. Their process respects that. No games, no delays — just execution at the highest level."</div>
+        <div class="testimonial-author"><div class="author-avatar">JR</div><div><div class="author-name">James Rothwell</div><div class="author-title">Private Equity Partner</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"We've used traditional banks and boutique lenders. Nothing compares to the Golden Globe experience. It's a different standard entirely."</div>
+        <div class="testimonial-author"><div class="author-avatar">AP</div><div><div class="author-name">Alexandra Pierce</div><div class="author-title">Family Office Director</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-eyebrow reveal">By Invitation. By Intent.</div>
+  <h2 class="cta-headline reveal">GOLDEN GLOBE IS<br>A PRIVATE INSTITUTION.</h2>
+  <p class="cta-sub reveal">We select our partners based on vision, track record, and mutual growth. Our managing partners are standing by to review your capital requirements.</p>
+  <a href="mailto:contact@goldenglobepartners.com" class="btn-cta reveal">
+    ↗ Request an Invitation
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <div class="logo-mark">GG</div>
+        <span class="footer-brand-name">GOLDEN GLOBE PARTNERS</span>
+      </div>
+      <div class="footer-desc">Private capital and real estate financing for the world's most ambitious enterprises.</div>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#philosophy">Home</a></li>
+      <li><a href="#offerings">Capital Suite</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#process">Golden Globe</a></li>
+      <li><a href="#cta">Contact</a></li>
+    </ul>
+    <div class="footer-right">
+      <a href="#cta" class="footer-cta-link">↗ Get Started</a>
+      <div style="font-size:11px; color:rgba(248,245,238,0.25);">Access the Invitation Portal</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>©2026 Golden Globe. All rights reserved.</span>
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Disclosures</a></li>
+      <li><a href="#">Institutional Login</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ─── CURSOR ───
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animateCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+})();
+
+// ─── NAVBAR ───
+ScrollTrigger.create({
+  start: 80,
+  onEnter: () => document.getElementById('navbar').classList.add('scrolled'),
+  onLeaveBack: () => document.getElementById('navbar').classList.remove('scrolled')
+});
+
+// ─── HERO REVEALS ───
+gsap.from('#hero .reveal', {
+  opacity: 0, y: 50, duration: 1, stagger: 0.15, ease: 'power3.out', delay: 0.3
+});
+
+// ─── SCROLL REVEALS ───
+gsap.utils.toArray('section:not(#hero) .reveal').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 48 },
+    { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    }
+  );
+});
+gsap.utils.toArray('.reveal-left').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, x: -48 },
+    { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    }
+  );
+});
+gsap.utils.toArray('.reveal-right').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, x: 48 },
+    { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+// ─── HERO PARALLAX ───
+gsap.to('#hero .hero-visual', {
+  yPercent: 20,
+  ease: 'none',
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// ─── GLOBAL COUNTER ───
+ScrollTrigger.create({
+  trigger: '#global',
+  start: 'top 70%',
+  once: true,
+  onEnter: () => {
+    const el = document.querySelector('.global-num');
+    let count = 0;
+    const target = 21000;
+    const step = () => {
+      count = Math.min(count + Math.ceil(target / 60), target);
+      el.textContent = (count >= 1000 ? Math.floor(count/1000) + 'K+' : count + '+');
+      if (count < target) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+});
+
+// ─── NANO BANANA 2 (Gemini) IMAGE GENERATION ───
+async function generateHeroImage() {
+  try {
+    const response = await puter.ai.txt2img(
+      'A luxury leather card holder wallet with gold embossed GG monogram logo, dark rich brown leather, elegant and sophisticated, luxury brand aesthetic, soft studio lighting, clean background, product photography, 8k, ultra detailed',
+      { model: 'gemini-2.5-flash-image-preview' }
+    );
+    const container = document.getElementById('heroImageContainer');
+    if (response && container) {
+      // puter.ai.txt2img returns an img element or similar
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'position:relative;display:inline-block;';
+      if (response.src) {
+        response.style.cssText = 'width:220px;height:300px;object-fit:cover;border-radius:20px;box-shadow:0 40px 80px rgba(0,0,0,0.4);display:block;';
+        wrapper.appendChild(response);
+      }
+      const badge = document.createElement('div');
+      badge.className = 'ai-gen-badge';
+      badge.textContent = 'Generated by Nano Banana 2';
+      wrapper.appendChild(badge);
+      container.innerHTML = '';
+      container.appendChild(wrapper);
+      gsap.from(wrapper, { opacity: 0, scale: 0.9, duration: 0.8, ease: 'back.out(1.4)' });
+    }
+  } catch(e) {
+    // Fallback to static card
+    const container = document.getElementById('heroImageContainer');
+    if (container) {
+      container.innerHTML = `
+        <div class="card-bg">
+          <div class="card-shine"></div>
+          <div class="card-logo">GG</div>
+          <div class="card-text">GG Private Client</div>
+        </div>`;
+    }
+  }
+}
+generateHeroImage();
+
+// ─── SMOOTH SCROLL FOR NAV LINKS ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      gsap.to(window, { scrollTo: target, duration: 1.2, ease: 'power3.inOut' });
+    }
+  });
+});
+</script>
+</body>
+</html>
