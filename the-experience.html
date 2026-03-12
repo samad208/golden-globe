@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Golden Globe Experience | Private Lending</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+#hero { min-height:90vh; background:var(--cream); position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; padding:160px 56px 100px; }
+.hero-img-wrap { position:relative; border-radius:28px; overflow:hidden; box-shadow:0 60px 120px rgba(0,0,0,.12); }
+.hero-img-wrap img { width:100%; display:block; }
+.hero-img-badge { position:absolute; bottom:24px; left:24px; background:white; border-radius:14px; padding:16px 22px; font-size:13px; font-weight:500; color:var(--black); box-shadow:0 8px 24px rgba(0,0,0,.1); }
+.hero-badge-num { font-family:var(--font-display); font-size:28px; font-weight:700; color:var(--gold); display:block; }
+.hero-h1 { font-family:var(--font-display); font-size:clamp(48px,7vw,100px); font-weight:700; line-height:.92; color:var(--black); letter-spacing:-.02em; margin:20px 0 24px; }
+.hero-sub { font-size:17px; font-weight:300; color:rgba(10,10,10,.55); line-height:1.8; max-width:480px; margin-bottom:44px; }
+
+/* STRATEGIC */
+#strategic { background:white; padding:120px 56px; }
+.strat-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.strat-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.1; color:var(--black); margin:14px 0 20px; }
+.strat-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:36px; }
+.strat-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.08); }
+.strat-img img { width:100%; display:block; }
+.strat-features { display:flex; flex-direction:column; gap:0; }
+.strat-feat { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:28px 0; border-bottom:1px solid var(--border); }
+.strat-feat:last-child { border-bottom:none; }
+.strat-feat-title { font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--black); margin-bottom:8px; }
+.strat-feat-text { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.65; }
+
+/* LEADERSHIP */
+#leadership { background:var(--black); padding:120px 56px; color:var(--cream); }
+.lead-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.lead-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--cream); margin:14px 0 20px; line-height:1.1; }
+.lead-desc { font-size:16px; font-weight:300; color:rgba(250,247,240,.45); line-height:1.8; margin-bottom:48px; }
+.lead-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.4); }
+.lead-img img { width:100%; display:block; }
+.lead-pillars { display:flex; flex-direction:column; gap:24px; }
+.lead-pillar { display:flex; gap:20px; padding:24px; background:rgba(255,255,255,.03); border:1px solid rgba(196,151,42,.12); border-radius:16px; transition:border-color .3s; }
+.lead-pillar:hover { border-color:rgba(196,151,42,.3); }
+.lead-pillar-icon { width:48px; height:48px; flex-shrink:0; background:rgba(196,151,42,.1); border:1px solid rgba(196,151,42,.2); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+.lead-pillar-title { font-family:var(--font-display); font-size:15px; font-weight:600; color:var(--gold-light); margin-bottom:6px; }
+.lead-pillar-text { font-size:14px; font-weight:300; color:rgba(250,247,240,.4); line-height:1.65; }
+
+/* SECURITY */
+#security { background:var(--cream); padding:120px 56px; }
+.sec-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.sec-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 20px; }
+.sec-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:36px; }
+.sec-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.08); }
+.sec-img img { width:100%; display:block; }
+.sec-tags { display:flex; flex-wrap:wrap; gap:10px; }
+.sec-tag { background:var(--black); color:var(--cream); font-size:11px; letter-spacing:.12em; text-transform:uppercase; padding:10px 18px; border-radius:50px; }
+
+/* PROCESS */
+#process-exec { background:white; padding:120px 56px; }
+.proc-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 16px; }
+.proc-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; max-width:600px; margin-bottom:64px; }
+.proc-list { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.proc-card { background:#FAFAF7; border:1px solid var(--border); border-radius:20px; overflow:hidden; transition:transform .3s,box-shadow .3s; }
+.proc-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,.06); }
+.proc-card-img { width:100%; height:220px; object-fit:cover; }
+.proc-card-body { padding:28px; }
+.proc-card-num { font-family:var(--font-display); font-size:13px; color:var(--gold); letter-spacing:.15em; margin-bottom:12px; }
+.proc-card-title { font-family:var(--font-display); font-size:20px; font-weight:600; color:var(--black); margin-bottom:10px; }
+.proc-card-text { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.65; }
+
+/* GLOBAL CONNECTIVITY */
+#connectivity { background:var(--black); padding:120px 56px; position:relative; overflow:hidden; }
+#connectivity::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(196,151,42,.06) 0%,transparent 65%); }
+.conn-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; z-index:1; }
+.conn-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--cream); margin:14px 0 20px; }
+.conn-desc { font-size:16px; font-weight:300; color:rgba(250,247,240,.4); line-height:1.8; margin-bottom:36px; }
+.conn-img { border-radius:24px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,.5); }
+.conn-img img { width:100%; display:block; }
+
+@media(max-width:900px){
+  #hero,.strat-grid,.lead-grid,.sec-grid,.conn-grid{grid-template-columns:1fr;gap:48px;}
+  #hero{padding:120px 20px 60px;}
+  #strategic,#leadership,#security,#process-exec,#connectivity{padding:80px 20px;}
+  .proc-list{grid-template-columns:1fr;}
+  .strat-feat{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="capital-suits.html">Capital Suite</a></li>
+    <li><a href="the-experience.html" class="active">Experience</a></li>
+    <li><a href="golden-globe.html">Golden Globe</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div>
+    <div class="eyebrow sr">True Partnership</div>
+    <h1 class="hero-h1 sr">48 Hours to execution</h1>
+    <p class="hero-sub sr">Behind every deployment is a partner, not a processor.</p>
+    <a href="contact.html" class="btn sr"><span class="btn-icon">↗</span>Request Access</a>
+  </div>
+  <div class="hero-img-wrap sr-right">
+    <img src="https://framerusercontent.com/images/yGtSZrOmqBmoezbTQZHP9mZpk.png" alt="Experience"/>
+    <div class="hero-img-badge"><span class="hero-badge-num">48 hrs</span>Average Deployment</div>
+  </div>
+</section>
+
+<section id="strategic">
+  <div class="strat-grid">
+    <div class="strat-img sr-left"><img src="https://framerusercontent.com/images/Ucj62ztwKs9D2g3rRJhpAXm9E.png" alt="Underwriting"/></div>
+    <div class="sr-right">
+      <div class="eyebrow">Strategic Partnership</div>
+      <h2 class="strat-h2">Underwriting built on trust</h2>
+      <p class="strat-desc">At Golden Globe, we believe the most valuable asset is time. Our team consists of veteran partners who understand that elite projects require elite speed.</p>
+      <div class="strat-features">
+        <div class="strat-feat">
+          <div><div class="strat-feat-title">Principal-Led Review</div><div class="strat-feat-text">Every opportunity evaluated by senior partners, not automated systems. Direct oversight. Measured decisions.</div></div>
+          <img src="https://framerusercontent.com/images/WUDt4vv4LJUCEst7qqArCRVVgKA.png" alt="" style="width:100%;border-radius:12px;object-fit:cover;height:80px;"/>
+        </div>
+        <div class="strat-feat">
+          <div><div class="strat-feat-title">Disciplined Execution</div><div class="strat-feat-text">Clear mandates. Defined timelines. Capital deployed with intention and control from review through allocation.</div></div>
+          <img src="https://framerusercontent.com/images/fnCWXOkfXDaHx9Gs8hMwyQcmNJY.png" alt="" style="width:100%;border-radius:12px;object-fit:cover;height:80px;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="lead-grid">
+    <div>
+      <div class="eyebrow sr" style="color:var(--gold)">Strategic Leadership</div>
+      <h2 class="lead-h2 sr">We don't just process files. We build financial infrastructure.</h2>
+      <p class="lead-desc sr">Our team consists of veteran partners who understand that elite projects require elite speed. Every engagement is led from the top.</p>
+      <div class="lead-pillars">
+        <div class="lead-pillar sr"><div class="lead-pillar-icon">⚡</div><div><div class="lead-pillar-title">48-Hour Deployment</div><div class="lead-pillar-text">From first conversation to funded capital in under two business days.</div></div></div>
+        <div class="lead-pillar sr"><div class="lead-pillar-icon">🌐</div><div><div class="lead-pillar-title">Global Infrastructure</div><div class="lead-pillar-text">Cross-border lending across 30+ jurisdictions with full regulatory compliance.</div></div></div>
+        <div class="lead-pillar sr"><div class="lead-pillar-icon">🔒</div><div><div class="lead-pillar-title">Obsidian Security</div><div class="lead-pillar-text">Institutional-grade encryption and privacy protocols at every stage.</div></div></div>
+      </div>
+    </div>
+    <div class="lead-img sr-right"><img src="https://framerusercontent.com/images/WUDt4vv4LJUCEst7qqArCRVVgKA.png" alt="Leadership"/></div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="sec-grid">
+    <div class="sr-left">
+      <div class="eyebrow">Security Without Compromise</div>
+      <h2 class="sec-h2">Obsidian Security</h2>
+      <p class="sec-desc">Your financial privacy is our highest priority. We utilize multi-layered encryption to ensure your data remains a private asset, protected by institutional-grade protocols.</p>
+      <div class="sec-tags">
+        <span class="sec-tag">AES-256 Encryption</span>
+        <span class="sec-tag">Zero-Knowledge Architecture</span>
+        <span class="sec-tag">SOC 2 Compliant</span>
+        <span class="sec-tag">NDA Protected</span>
+        <span class="sec-tag">Private Cloud</span>
+      </div>
+    </div>
+    <div class="sec-img sr-right"><img src="https://framerusercontent.com/images/GDWZC96rp6rPpV9OAUGJ5k324.png" alt="Security"/></div>
+  </div>
+</section>
+
+<section id="process-exec">
+  <div class="eyebrow sr">Our Process</div>
+  <h2 class="proc-h2 sr">Execution Framework</h2>
+  <p class="proc-desc sr">Our framework is designed to deliver speed, precision, and strategic clarity at every stage. From intake to deployment, each step is structured to ensure seamless execution.</p>
+  <div class="proc-list">
+    <div class="proc-card sr">
+      <img class="proc-card-img" src="https://framerusercontent.com/images/9u7JfxucSFEiKhz6ape2pF9k.png" alt="Intake"/>
+      <div class="proc-card-body"><div class="proc-card-num">STEP 01</div><div class="proc-card-title">INTAKE</div><div class="proc-card-text">Initial briefing of your capital needs. A 15-minute partner call to establish mandate and structure.</div></div>
+    </div>
+    <div class="proc-card sr">
+      <img class="proc-card-img" src="https://framerusercontent.com/images/xFhTWbqJKVnpS287i45biWwYVM.png" alt="Review"/>
+      <div class="proc-card-body"><div class="proc-card-num">STEP 02</div><div class="proc-card-title">PRECISION REVIEW</div><div class="proc-card-text">Accelerated review and decisive structuring. Senior partner evaluation, no algorithmic bottlenecks.</div></div>
+    </div>
+    <div class="proc-card sr">
+      <img class="proc-card-img" src="https://framerusercontent.com/images/ReOOOSZosY0bNgn2PXGt0V24m8.png" alt="Deployment"/>
+      <div class="proc-card-body"><div class="proc-card-num">STEP 03</div><div class="proc-card-title">DEPLOYMENT</div><div class="proc-card-text">Final terms issued and capital deployed via wire as little as 48 hours from approval.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="connectivity">
+  <div class="conn-grid">
+    <div>
+      <div class="eyebrow sr" style="color:var(--gold)">Borderless Network</div>
+      <h2 class="conn-h2 sr">Unlimited Global Connectivity</h2>
+      <p class="conn-desc sr">Infrastructure for the world's most significant moves. From New York to Zurich, Golden Globe operates wherever opportunity exists.</p>
+      <a href="contact.html" class="btn btn-outline sr"><span class="btn-icon">↗</span>Access the Network</a>
+    </div>
+    <div class="conn-img sr-right"><img src="https://framerusercontent.com/images/1zTVzjhMlk583d7ALlU2mwyFA.png" alt="Global Network"/></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="https://framerusercontent.com/images/LKy4NSnn1Zc5OW0tzAmOkWbDTKY.svg" alt="Golden Globe"/><p class="footer-tagline">Private capital and real estate financing for the world's most ambitious enterprises.</p></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-nav-list"><li><a href="index.html">Home</a></li><li><a href="capital-suits.html">Capital Suite</a></li><li><a href="the-experience.html">Experience</a></li><li><a href="golden-globe.html">Golden Globe</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-cta-block"><div class="footer-col-title">Work With Us</div><p style="font-size:13px;font-weight:300;color:rgba(250,247,240,.4);line-height:1.7;margin-bottom:8px;">Ready to deploy? Our managing partners are standing by.</p><a href="contact.html" class="footer-cta-btn">↗ Get Started</a></div>
+  </div>
+  <div class="footer-bottom"><span>©2026 Golden Globe. All rights reserved.</span><ul class="footer-bottom-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosures</a></li><li><a href="#">Institutional Login</a></li></ul></div>
+</footer>
+<script>
+window.addEventListener('load',()=>{
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  gsap.from('#hero .sr,#hero .sr-right',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.2});
+  document.querySelectorAll('section .sr,section .sr-left,section .sr-right').forEach(el=>{
+    const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:{y:44};
+    gsap.fromTo(el,{opacity:0,...from},{opacity:1,x:0,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+  });
+});
+</script>
+</body>
+</html>
