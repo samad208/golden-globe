@@ -10,13 +10,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <style>
-#hero { min-height:90vh; background:var(--black); display:flex; flex-direction:column; justify-content:flex-end; padding:160px 56px 100px; position:relative; overflow:hidden; }
-#hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 30%,rgba(196,151,42,.12) 0%,transparent 60%); }
-.hero-h1 { font-family:var(--font-display); font-size:clamp(52px,8vw,120px); font-weight:700; line-height:.9; color:var(--cream); letter-spacing:-.02em; margin:20px 0 28px; max-width:900px; position:relative; }
-.hero-sub { font-size:17px; font-weight:300; color:rgba(250,247,240,.45); max-width:560px; line-height:1.8; position:relative; }
+#hero {
+  min-height: 90vh; background: var(--black);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 160px 72px 100px;
+  position: relative; overflow: hidden;
+}
+#hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(196,151,42,.14) 0%, transparent 55%),
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+}
+/* Decorative gold rule */
+#hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 72px; right: 72px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,151,42,.3), transparent);
+}
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 8.5vw, 124px);
+  font-weight: 700; line-height: .88;
+  color: var(--cream); letter-spacing: -.025em;
+  margin: 20px 0 28px; max-width: 900px; position: relative;
+}
+.hero-sub {
+  font-size: 17px; font-weight: 300;
+  color: rgba(250,247,240,.45); max-width: 520px; line-height: 1.8;
+  position: relative;
+}
 
 /* GLOBAL STRATEGY */
-#global-strat { background:var(--cream); padding:120px 56px; }
+#global-strat { background:var(--cream); padding:120px 72px; }
 .gs-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
 .gs-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 16px; line-height:1.1; }
 .gs-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:48px; }
@@ -30,7 +58,7 @@
 .gs-img img { width:100%; display:block; }
 
 /* COMPLIANCE */
-#compliance { background:white; padding:120px 56px; }
+#compliance { background:white; padding:120px 72px; }
 .comp-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
 .comp-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 20px; line-height:1.1; }
 .comp-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:36px; }
@@ -43,7 +71,7 @@
 .comp-point-text { font-size:13px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.55; }
 
 /* BEYOND CAPITAL */
-#beyond { background:var(--black); padding:120px 56px; }
+#beyond { background:var(--black); padding:120px 72px; }
 .bey-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
 .bey-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--cream); margin:14px 0 20px; }
 .bey-desc { font-size:16px; font-weight:300; color:rgba(250,247,240,.45); line-height:1.8; margin-bottom:36px; }
@@ -51,7 +79,7 @@
 .bey-img img { width:100%; display:block; }
 
 /* FOREIGN PORTFOLIOS */
-#foreign { background:var(--cream); padding:120px 56px; }
+#foreign { background:var(--cream); padding:120px 72px; }
 .for-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 16px; }
 .for-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; max-width:600px; margin-bottom:64px; }
 .for-gallery { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; align-items:start; }
@@ -63,9 +91,9 @@
 .for-img-num::before { content:attr(data-num); position:absolute; top:12px; left:12px; background:var(--gold); color:var(--black); width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; z-index:1; }
 
 @media(max-width:900px){
-  #hero{padding:120px 20px 60px;}
+  #hero{padding:120px 24px 60px;}
   .gs-grid,.comp-grid,.bey-grid{grid-template-columns:1fr;gap:48px;}
-  #global-strat,#compliance,#beyond,#foreign{padding:80px 20px;}
+  #global-strat,#compliance,#beyond,#foreign{padding:80px 24px;}
   .for-gallery{grid-template-columns:repeat(2,1fr);}
   .for-img:nth-child(1),.for-img:nth-child(3){grid-row:auto;}
 }
@@ -83,7 +111,18 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-overlay" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="capital-suits.html">Capital Suite</a>
+  <a href="the-experience.html">Experience</a>
+  <a href="golden-globe.html">Golden Globe</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta">↗ Get Started</a>
+</div>
 
 <section id="hero">
   <div class="eyebrow sr" style="color:rgba(196,151,42,.7)">True Partnership</div>
@@ -109,7 +148,7 @@
 
 <section id="compliance">
   <div class="comp-grid">
-    <div class="comp-img sr-left"><img src="https://framerusercontent.com/images/3dSf0ejzUThNVHlYu7raVlKK8Q.png" alt="Compliance"/></div>
+    <div class="comp-img sr-left"><img src="https://framerusercontent.com/images/GnP8Nynr0ekE0YBrzBWFkDnLM6Q.jpg" alt="Compliance"/></div>
     <div class="sr-right">
       <div class="eyebrow">Compliance Without Compromise</div>
       <h2 class="comp-h2">Seamless Transfers &amp; Absolute Compliance</h2>
@@ -165,6 +204,9 @@ window.addEventListener('load',()=>{
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
   ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  const hbg=document.getElementById('hamburger'),mNav=document.getElementById('mobileNav');
+  hbg.addEventListener('click',()=>{const o=mNav.classList.toggle('open');hbg.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+  mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mNav.classList.remove('open');hbg.classList.remove('open');document.body.style.overflow='';}));
   gsap.from('#hero .sr',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.25});
   document.querySelectorAll('section .sr,section .sr-left,section .sr-right').forEach(el=>{
     const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:{y:44};
