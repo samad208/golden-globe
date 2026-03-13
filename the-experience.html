@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <style>
-#hero { min-height:90vh; background:var(--cream); position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; padding:160px 56px 100px; }
+#hero { min-height:90vh; background:var(--cream); position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; padding:160px 72px 100px; }
 .hero-img-wrap { position:relative; border-radius:28px; overflow:hidden; box-shadow:0 60px 120px rgba(0,0,0,.12); }
 .hero-img-wrap img { width:100%; display:block; }
 .hero-img-badge { position:absolute; bottom:24px; left:24px; background:white; border-radius:14px; padding:16px 22px; font-size:13px; font-weight:500; color:var(--black); box-shadow:0 8px 24px rgba(0,0,0,.1); }
@@ -19,7 +19,7 @@
 .hero-sub { font-size:17px; font-weight:300; color:rgba(10,10,10,.55); line-height:1.8; max-width:480px; margin-bottom:44px; }
 
 /* STRATEGIC */
-#strategic { background:white; padding:120px 56px; }
+#strategic { background:white; padding:120px 72px; }
 .strat-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
 .strat-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.1; color:var(--black); margin:14px 0 20px; }
 .strat-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:36px; }
@@ -32,7 +32,7 @@
 .strat-feat-text { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.65; }
 
 /* LEADERSHIP */
-#leadership { background:var(--black); padding:120px 56px; color:var(--cream); }
+#leadership { background:var(--black); padding:120px 72px; color:var(--cream); }
 .lead-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
 .lead-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--cream); margin:14px 0 20px; line-height:1.1; }
 .lead-desc { font-size:16px; font-weight:300; color:rgba(250,247,240,.45); line-height:1.8; margin-bottom:48px; }
@@ -46,7 +46,7 @@
 .lead-pillar-text { font-size:14px; font-weight:300; color:rgba(250,247,240,.4); line-height:1.65; }
 
 /* SECURITY */
-#security { background:var(--cream); padding:120px 56px; }
+#security { background:var(--cream); padding:120px 72px; }
 .sec-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
 .sec-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 20px; }
 .sec-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; margin-bottom:36px; }
@@ -56,7 +56,7 @@
 .sec-tag { background:var(--black); color:var(--cream); font-size:11px; letter-spacing:.12em; text-transform:uppercase; padding:10px 18px; border-radius:50px; }
 
 /* PROCESS */
-#process-exec { background:white; padding:120px 56px; }
+#process-exec { background:white; padding:120px 72px; }
 .proc-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--black); margin:14px 0 16px; }
 .proc-desc { font-size:16px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.8; max-width:600px; margin-bottom:64px; }
 .proc-list { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
@@ -69,7 +69,7 @@
 .proc-card-text { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.65; }
 
 /* GLOBAL CONNECTIVITY */
-#connectivity { background:var(--black); padding:120px 56px; position:relative; overflow:hidden; }
+#connectivity { background:var(--black); padding:120px 72px; position:relative; overflow:hidden; }
 #connectivity::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(196,151,42,.06) 0%,transparent 65%); }
 .conn-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; z-index:1; }
 .conn-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:var(--cream); margin:14px 0 20px; }
@@ -79,8 +79,8 @@
 
 @media(max-width:900px){
   #hero,.strat-grid,.lead-grid,.sec-grid,.conn-grid{grid-template-columns:1fr;gap:48px;}
-  #hero{padding:120px 20px 60px;}
-  #strategic,#leadership,#security,#process-exec,#connectivity{padding:80px 20px;}
+  #hero{padding:120px 24px 60px;}
+  #strategic,#leadership,#security,#process-exec,#connectivity{padding:80px 24px;}
   .proc-list{grid-template-columns:1fr;}
   .strat-feat{grid-template-columns:1fr;}
 }
@@ -98,12 +98,23 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-overlay" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="capital-suits.html">Capital Suite</a>
+  <a href="the-experience.html">Experience</a>
+  <a href="golden-globe.html">Golden Globe</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta">↗ Get Started</a>
+</div>
 
 <section id="hero">
   <div>
     <div class="eyebrow sr">True Partnership</div>
-    <h1 class="hero-h1 sr">48 Hours to execution</h1>
+    <h1 class="hero-h1 sr">48 HOURS TO<br>EXECUTION.</h1>
     <p class="hero-sub sr">Behind every deployment is a partner, not a processor.</p>
     <a href="contact.html" class="btn sr"><span class="btn-icon">↗</span>Request Access</a>
   </div>
@@ -141,9 +152,24 @@
       <h2 class="lead-h2 sr">We don't just process files. We build financial infrastructure.</h2>
       <p class="lead-desc sr">Our team consists of veteran partners who understand that elite projects require elite speed. Every engagement is led from the top.</p>
       <div class="lead-pillars">
-        <div class="lead-pillar sr"><div class="lead-pillar-icon">⚡</div><div><div class="lead-pillar-title">48-Hour Deployment</div><div class="lead-pillar-text">From first conversation to funded capital in under two business days.</div></div></div>
-        <div class="lead-pillar sr"><div class="lead-pillar-icon">🌐</div><div><div class="lead-pillar-title">Global Infrastructure</div><div class="lead-pillar-text">Cross-border lending across 30+ jurisdictions with full regulatory compliance.</div></div></div>
-        <div class="lead-pillar sr"><div class="lead-pillar-icon">🔒</div><div><div class="lead-pillar-title">Obsidian Security</div><div class="lead-pillar-text">Institutional-grade encryption and privacy protocols at every stage.</div></div></div>
+        <div class="lead-pillar sr">
+          <div class="lead-pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(196,151,42,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div><div class="lead-pillar-title">48-Hour Deployment</div><div class="lead-pillar-text">From first conversation to funded capital in under two business days.</div></div>
+        </div>
+        <div class="lead-pillar sr">
+          <div class="lead-pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(196,151,42,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div><div class="lead-pillar-title">Global Infrastructure</div><div class="lead-pillar-text">Cross-border lending across 30+ jurisdictions with full regulatory compliance.</div></div>
+        </div>
+        <div class="lead-pillar sr">
+          <div class="lead-pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(196,151,42,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div><div class="lead-pillar-title">Obsidian Security</div><div class="lead-pillar-text">Institutional-grade encryption and privacy protocols at every stage.</div></div>
+        </div>
       </div>
     </div>
     <div class="lead-img sr-right"><img src="https://framerusercontent.com/images/WUDt4vv4LJUCEst7qqArCRVVgKA.png" alt="Leadership"/></div>
@@ -217,6 +243,9 @@ window.addEventListener('load',()=>{
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
   ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  const hbg=document.getElementById('hamburger'),mNav=document.getElementById('mobileNav');
+  hbg.addEventListener('click',()=>{const o=mNav.classList.toggle('open');hbg.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+  mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mNav.classList.remove('open');hbg.classList.remove('open');document.body.style.overflow='';}));
   gsap.from('#hero .sr,#hero .sr-right',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.2});
   document.querySelectorAll('section .sr,section .sr-left,section .sr-right').forEach(el=>{
     const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:{y:44};
