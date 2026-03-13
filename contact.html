@@ -10,13 +10,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <style>
-#hero { min-height:80vh; background:radial-gradient(ellipse at 60% 40%,#EDD06E 0%,#C9A840 40%,#9A7520 75%,#6B4F0E 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:160px 56px 100px; position:relative; overflow:hidden; }
+#hero { min-height:80vh; background:radial-gradient(ellipse at 60% 40%,#EDD06E 0%,#C9A840 40%,#9A7520 75%,#6B4F0E 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:160px 72px 100px; position:relative; overflow:hidden; }
 #hero .grid-bg::before { background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px); background-size:64px 64px; }
 .hero-h1 { font-family:var(--font-display); font-size:clamp(28px,4vw,52px); font-weight:700; color:var(--black); line-height:1.1; max-width:700px; margin:16px auto 20px; }
 .hero-sub { font-size:16px; font-weight:300; color:rgba(10,10,10,.6); max-width:520px; margin:0 auto; line-height:1.8; }
 
 /* PROFILE SELECTOR */
-#profile { background:white; padding:100px 56px; }
+#profile { background:white; padding:100px 72px; }
 .prof-h2 { font-family:var(--font-display); font-size:clamp(28px,3.5vw,44px); font-weight:700; color:var(--black); text-align:center; margin:14px 0 16px; }
 .prof-sub { font-size:15px; font-weight:300; color:rgba(10,10,10,.5); text-align:center; max-width:520px; margin:0 auto 56px; line-height:1.75; }
 .prof-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:800px; margin:0 auto; }
@@ -32,7 +32,7 @@
 .prof-sub-text { font-size:12px; font-weight:300; color:rgba(10,10,10,.45); }
 
 /* FORM */
-#form-section { background:var(--cream); padding:100px 56px; }
+#form-section { background:var(--cream); padding:100px 72px; }
 .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; max-width:1100px; margin:0 auto; }
 .form-left {}
 .form-h2 { font-family:var(--font-display); font-size:clamp(24px,3vw,40px); font-weight:700; color:var(--black); margin:14px 0 16px; }
@@ -64,7 +64,7 @@
 .form-right-stat-l { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(250,247,240,.25); margin-top:2px; }
 
 /* UPLOAD */
-#upload { background:white; padding:80px 56px; }
+#upload { background:white; padding:80px 72px; }
 .upload-h2 { font-family:var(--font-display); font-size:clamp(22px,2.8vw,38px); font-weight:700; color:var(--black); margin:14px 0 12px; }
 .upload-desc { font-size:15px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.75; margin-bottom:40px; max-width:560px; }
 .upload-zone {
@@ -81,7 +81,7 @@
 .upload-formats { font-size:11px; color:rgba(10,10,10,.3); margin-top:16px; }
 
 /* OFFICES */
-#offices { background:var(--cream); padding:100px 56px; }
+#offices { background:var(--cream); padding:100px 72px; }
 .off-h2 { font-family:var(--font-display); font-size:clamp(22px,2.8vw,38px); font-weight:700; color:var(--black); margin:14px 0 48px; }
 .off-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
 .off-card { background:white; border:1px solid var(--border); border-radius:20px; overflow:hidden; transition:transform .3s,box-shadow .3s; }
@@ -93,7 +93,7 @@
 .off-card-addr { font-size:14px; font-weight:300; color:rgba(10,10,10,.5); line-height:1.6; }
 
 /* PARTNER */
-#partner { background:var(--black); padding:100px 56px; text-align:center; position:relative; overflow:hidden; }
+#partner { background:var(--black); padding:100px 72px; text-align:center; position:relative; overflow:hidden; }
 #partner::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(196,151,42,.07) 0%,transparent 65%); }
 .part-h2 { font-family:var(--font-display); font-size:clamp(28px,4vw,56px); font-weight:700; color:var(--cream); margin:14px 0 20px; line-height:1.1; position:relative; z-index:1; }
 .part-sub { font-size:16px; font-weight:300; color:rgba(250,247,240,.4); max-width:480px; margin:0 auto 40px; line-height:1.8; position:relative; z-index:1; }
@@ -101,7 +101,7 @@
 .part-img img { width:100%; display:block; }
 
 @media(max-width:900px){
-  #hero,#profile,#form-section,#upload,#offices,#partner{padding-left:20px;padding-right:20px;}
+  #hero,#profile,#form-section,#upload,#offices,#partner{padding-left:24px;padding-right:24px;}
   .prof-cards{grid-template-columns:1fr;max-width:100%;}
   .form-grid{grid-template-columns:1fr;gap:48px;}
   .off-grid{grid-template-columns:1fr;}
@@ -120,7 +120,18 @@
     <li><a href="contact.html" class="active">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-overlay" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="capital-suits.html">Capital Suite</a>
+  <a href="the-experience.html">Experience</a>
+  <a href="golden-globe.html">Golden Globe</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta">↗ Get Started</a>
+</div>
 
 <section id="hero" class="grid-bg">
   <div class="eyebrow sr" style="justify-content:center;">Identity Classification</div>
@@ -231,7 +242,7 @@
       </div>
     </div>
     <div class="off-card sr">
-      <img class="off-card-img" src="https://framerusercontent.com/images/ps5Cdoz3XAwKeuIdYljac09hiY0.png" alt="London"/>
+      <img class="off-card-img" src="https://framerusercontent.com/images/l3rkDDjdRdBtixYfTy0Uvuake0.png" alt="London"/>
       <div class="off-card-body">
         <div class="off-card-city">London</div>
         <div class="off-card-role">London Institutional Office</div>
@@ -260,8 +271,9 @@
 function selectProfile(el){document.querySelectorAll('.prof-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
 function submitForm(){
   const btn=document.querySelector('.form-submit');
-  btn.textContent='✓ Request Submitted';btn.style.background='#2D7D4A';
-  setTimeout(()=>{btn.textContent='↗ Submit to Managing Partner';btn.style.background='';},3000);
+  btn.textContent='✓ Request Received — We\'ll Be In Touch';
+  btn.style.background='var(--gold)'; btn.style.color='var(--black)';
+  setTimeout(()=>{btn.textContent='↗ Submit to Managing Partner';btn.style.background='';btn.style.color='';},4000);
 }
 const uz=document.getElementById('uploadZone');
 if(uz){uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('dragover');});uz.addEventListener('dragleave',()=>uz.classList.remove('dragover'));uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f)uz.querySelector('.upload-text').textContent='✓ '+f.name+' ready to upload';});}
@@ -273,6 +285,9 @@ window.addEventListener('load',()=>{
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
   ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  const hbg=document.getElementById('hamburger'),mNav=document.getElementById('mobileNav');
+  hbg.addEventListener('click',()=>{const o=mNav.classList.toggle('open');hbg.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+  mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mNav.classList.remove('open');hbg.classList.remove('open');document.body.style.overflow='';}));
   gsap.from('#hero .sr',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.2});
   document.querySelectorAll('section .sr,section .sr-left,section .sr-right').forEach(el=>{
     const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:{y:44};
