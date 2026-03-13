@@ -36,7 +36,7 @@
 .hero-sub { font-size:17px;font-weight:300;color:rgba(250,247,240,.5);max-width:520px;line-height:1.75;margin-bottom:44px; }
 
 /* ── PORTFOLIO HERO ── */
-#portfolio-hero { background:white; padding:120px 56px; }
+#portfolio-hero { background:white; padding:120px 72px; }
 .port-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
 .port-h2 { font-family:var(--font-display);font-size:clamp(32px,4vw,54px);font-weight:700;line-height:1.08;color:var(--black);margin:14px 0 20px; }
 .port-desc { font-size:16px;font-weight:300;color:rgba(10,10,10,.55);line-height:1.8;margin-bottom:36px; }
@@ -59,7 +59,7 @@
 .port-stat-l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);}
 
 /* ── ENTERPRISE ── */
-#enterprise { background:var(--cream);padding:120px 56px; }
+#enterprise { background:var(--cream);padding:120px 72px; }
 .ent-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
 .ent-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.1;color:var(--black);margin:14px 0 20px; }
 .ent-tag {
@@ -79,7 +79,7 @@
 .ent-card-sub{font-size:14px;font-weight:300;color:rgba(250,247,240,.4);line-height:1.7;}
 
 /* ── FINANCING SOLUTIONS ── */
-#financing { background:white;padding:120px 56px; }
+#financing { background:white;padding:120px 72px; }
 .fin-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--black);margin:14px 0 12px; }
 .fin-desc { font-size:16px;font-weight:300;color:rgba(10,10,10,.5);line-height:1.8;max-width:600px;margin-bottom:64px; }
 .fin-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
@@ -93,14 +93,14 @@
 .fin-text{font-size:14px;font-weight:300;color:rgba(10,10,10,.5);line-height:1.65;}
 
 /* ── TRANSPARENCY ── */
-#transparency { background:var(--black);padding:120px 56px;text-align:center; }
+#transparency { background:var(--black);padding:120px 72px;text-align:center; }
 .trans-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--cream);margin:14px 0 16px; }
 .trans-desc { font-size:16px;font-weight:300;color:rgba(250,247,240,.4);max-width:560px;margin:0 auto 64px;line-height:1.8; }
 .trans-img { max-width:480px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.4); }
 .trans-img img { width:100%;display:block; }
 
 /* ── FAQ ── */
-#faq { background:var(--cream);padding:120px 56px; }
+#faq { background:var(--cream);padding:120px 72px; }
 .faq-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start; }
 .faq-h2 { font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--black);margin:14px 0; }
 .faq-list { display:flex;flex-direction:column;gap:0; }
@@ -119,7 +119,7 @@
 @media(max-width:900px){
   .port-grid,.ent-grid,.faq-grid{grid-template-columns:1fr;gap:48px;}
   .fin-grid{grid-template-columns:1fr;}
-  #hero,#portfolio-hero,#enterprise,#financing,#transparency,#faq{padding-left:20px;padding-right:20px;}
+  #hero,#portfolio-hero,#enterprise,#financing,#transparency,#faq{padding-left:24px;padding-right:24px;}
   #hero{padding-bottom:60px;}
   .port-stat-row{grid-template-columns:1fr;}
 }
@@ -138,13 +138,24 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">↗ Get Started</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-overlay" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="capital-suits.html">Capital Suite</a>
+  <a href="the-experience.html">Experience</a>
+  <a href="golden-globe.html">Golden Globe</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta">↗ Get Started</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg-img"></div>
   <div class="hero-eyebrow sr">Private Capital &amp; Financing</div>
-  <h1 class="hero-h1 sr">LENDING<br>SOLUTION</h1>
+  <h1 class="hero-h1 sr">ELITE<br>LENDING<br>SUITES.</h1>
   <p class="hero-sub sr">Bespoke lending solutions for high-net-worth individuals and elite enterprises. Seamless, secure, and sophisticated.</p>
   <a href="contact.html" class="btn sr"><span class="btn-icon">↗</span>Get Started</a>
   <p style="font-family:var(--font-display);font-style:italic;font-size:13px;color:rgba(250,247,240,.3);margin-top:12px;" class="sr">"Trusted by borrowers across the U.S."</p>
@@ -304,6 +315,9 @@ window.addEventListener('load',()=>{
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
   ScrollTrigger.create({start:60,onEnter:()=>document.getElementById('nav').classList.add('scrolled'),onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')});
+  const hbg=document.getElementById('hamburger'),mNav=document.getElementById('mobileNav');
+  hbg.addEventListener('click',()=>{const o=mNav.classList.toggle('open');hbg.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+  mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mNav.classList.remove('open');hbg.classList.remove('open');document.body.style.overflow='';}));
   gsap.from('#hero .sr',{opacity:0,y:50,duration:1,stagger:.13,ease:'power3.out',delay:.2});
   document.querySelectorAll('section .sr,section .sr-left,section .sr-right,section .sr-scale').forEach(el=>{
     const from=el.classList.contains('sr-left')?{x:-44}:el.classList.contains('sr-right')?{x:44}:el.classList.contains('sr-scale')?{scale:.93}:{y:44};
